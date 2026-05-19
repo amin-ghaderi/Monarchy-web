@@ -13,6 +13,12 @@ Route-scoped lazy loading keeps reader routes free of motion JS.
 1. Import primitives from `@/components/motion` only in cinematic routes.
 2. Never static-import `gsap` — use `loadGsap()` / `loadScrollTrigger()` from `@/lib/motion`.
 3. Gate all motion with `useReducedMotion()` or `data-motion="reduced"` CSS.
-4. Review bundle with `@next/bundle-analyzer` before Sprint 3 ship.
+4. Review bundle with `@next/bundle-analyzer` before cinematic sprints ship.
+
+## History continuum (Sprint 5)
+
+- Route: `/history` only — `HistoryReveal`, era washes, CSS spine
+- No GSAP, no scroll progress on history
+- Calmer motion than homepage (≤10px translate, 350ms tier)
 
 Constants: `MOTION_BUDGET_BYTES` in `src/lib/motion/budgets.ts`.

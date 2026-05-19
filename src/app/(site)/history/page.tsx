@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { EraNav } from "@/components/history/era-nav";
+import { HistoryContinuumEntry } from "@/components/history/history-continuum-entry";
 import { HistoryEmptyState } from "@/components/history/history-empty-state";
 import { HistoryTimeline } from "@/components/history/history-timeline";
 import { EditorialPageHeader } from "@/components/editorial/editorial-page-header";
@@ -29,7 +30,9 @@ export default async function HistoryPage() {
         description="چارچوبی نهادی برای فهم دوره‌ها، رویدادهای کلیدی، و پیوند آن‌ها با اسناد و مواضع رسمی — بدون اغراق بصری."
       />
 
-      <section className="mt-10 max-w-3xl" aria-labelledby="why-history-title">
+      <HistoryContinuumEntry />
+
+      <section className="mt-8 max-w-3xl" aria-labelledby="why-history-title">
         <h2
           id="why-history-title"
           className="text-[length:var(--font-size-h2)] font-semibold text-ink"

@@ -2,6 +2,7 @@
 @import "./tokens.css";
 @import "./motion.css";
 @import "./home-atmosphere.css";
+@import "./history-atmosphere.css";
 
 @theme inline {
   /* Colors */

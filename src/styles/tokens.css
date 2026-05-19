@@ -61,6 +61,10 @@
   --grain-opacity: 0.025;
   --motion-chapter: var(--motion-l2);
 
+  /* History continuum (Sprint 5) */
+  --history-grain-opacity: 0.028;
+  --history-grain-opacity-heavy: 0.038;
+
   /* Homepage atmosphere (Sprint 4) — discovered, not designed */
   --atmosphere-grain-opacity: 0.035;
   --atmosphere-contour-opacity: 0.025;
