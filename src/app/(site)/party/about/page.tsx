@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { EditorialPageHeader } from "@/components/editorial/editorial-page-header";
 import { PageContainer } from "@/components/layout/page-container";
 import { createContentMetadata } from "@/lib/seo/metadata";
 
@@ -49,15 +50,11 @@ const sections = [
 export default function PartyAboutPage() {
   return (
     <PageContainer variant="institutional">
-      <header className="border-b border-mist pb-8">
-        <p className="text-[length:var(--font-size-label)] font-medium text-meta">حزب</p>
-        <h1 className="mt-2 text-[length:var(--font-size-h1)] font-semibold leading-[var(--line-height-heading)] text-ink">
-          درباره پارمان پادشاهی ایرانیان
-        </h1>
-        <p className="mt-4 max-w-2xl text-[length:var(--font-size-lead)] leading-relaxed text-ink-secondary">
-          نهاد سیاسی و ملی بر پایه ایرانشهری، قانون‌مداری، و پادشاهی پارلمانی.
-        </p>
-      </header>
+      <EditorialPageHeader
+        label="حزب"
+        title="درباره پارمان پادشاهی ایرانیان"
+        description="نهاد سیاسی و ملی بر پایه ایرانشهری، قانون‌مداری، و پادشاهی پارلمانی."
+      />
 
       <div className="mt-12 space-y-12">
         {sections.map((section) => (

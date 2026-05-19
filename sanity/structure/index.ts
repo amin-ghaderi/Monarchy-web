@@ -11,6 +11,13 @@ export const structure: StructureResolver = (S) =>
             .title("بیانیه‌ها")
             .defaultOrdering([{ field: "publishedAt", direction: "desc" }]),
         ),
+      S.listItem()
+        .title("مطالب رسانه‌ای")
+        .child(
+          S.documentTypeList("mediaArticle")
+            .title("مطالب رسانه‌ای")
+            .defaultOrdering([{ field: "publishedAt", direction: "desc" }]),
+        ),
       S.divider(),
       S.listItem()
         .title("اسناد")

@@ -1,10 +1,11 @@
 import { statementTypeLabels } from "@/lib/content/statement-labels";
+import { editorialBreadcrumbs } from "@/lib/editorial/breadcrumbs";
 import type { StatementDocument } from "@/types/content";
 import { AuthorsRow } from "@/components/editorial/authors-row";
 import { Breadcrumb } from "@/components/editorial/breadcrumb";
 import { DocumentActions } from "@/components/editorial/document-actions";
-import { MetadataRow } from "@/components/editorial/metadata-row";
 import { EditorialPortableText } from "@/components/editorial/portable-text";
+import { PublicationMeta } from "@/components/editorial/publication-meta";
 import { ReadingContainer } from "@/components/editorial/reading-container";
 
 type StatementViewProps = {
@@ -19,14 +20,14 @@ export function StatementView({ statement }: StatementViewProps) {
       <Breadcrumb
         className="mb-8"
         items={[
-          { label: "خانه", href: "/" },
-          { label: "بیانیه‌ها", href: "/archive" },
+          editorialBreadcrumbs.home(),
+          editorialBreadcrumbs.archive(),
           { label: typeLabel },
         ]}
       />
 
       <header className="mb-10">
-        <MetadataRow typeLabel={typeLabel} publishedAt={statement.publishedAt} />
+        <PublicationMeta typeLabel={typeLabel} publishedAt={statement.publishedAt} accent="gold" />
         <h1 className="mt-6 text-[length:var(--font-size-h1)] font-semibold leading-[var(--line-height-heading)] text-ink">
           {statement.titleFa}
         </h1>

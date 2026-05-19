@@ -1,6 +1,7 @@
 import { charterDocumentType } from "./documents/charterDocument";
 import { personType } from "./documents/person";
 import { siteSettingsType } from "./documents/siteSettings";
+import { mediaArticleType } from "./documents/mediaArticle";
 import { statementType } from "./documents/statement";
 import { charterSectionType } from "./objects/charterSection";
 import { editorialBodyType } from "./objects/editorialBody";
@@ -12,6 +13,7 @@ export const schemaTypes = [
   charterSectionType,
   personType,
   statementType,
+  mediaArticleType,
   charterDocumentType,
   siteSettingsType,
 ];

@@ -1,6 +1,7 @@
 import { excerptFromPortableText } from "@/lib/content/excerpt";
 import type {
   CharterDocument,
+  MediaArticleDocument,
   PersonSummary,
   StatementDocument,
   StatementListItem,
@@ -99,6 +100,75 @@ export const mockStatements: StatementDocument[] = [
             marks: [],
           },
         ],
+      },
+    ],
+  },
+  {
+    _id: "stmt-press-transparency",
+    _type: "statement",
+    titleFa: "اطلاعیه مطبوعاتی پارمان درباره شفافیت انتشارات رسمی",
+    slug: "press-transparency-publications",
+    statementType: "press",
+    publishedAt: "2026-03-20T10:00:00.000Z",
+    language: "fa",
+    authors: [mockAuthors[0]!],
+    status: "published",
+    seo: {
+      metaTitle: "اطلاعیه شفافیت انتشارات",
+      metaDescription:
+        "اطلاعیه مطبوعاتی پارمان پادشاهی ایرانیان درباره استانداردهای انتشار بیانیه و اسناد رسمی.",
+    },
+    bodyFa: [
+      block(
+        "پارمان پادشاهی ایرانیان متعهد است که تمامی بیانیه‌ها و اسناد رسمی با تاریخ، امضا، و متن کامل در وب‌گاه نهاد منتشر شوند.",
+      ),
+      block(
+        "این رویکرد بخشی از تعهد ما به پاسخ‌گویی مؤسساتی و اعتماد عمومی است.",
+      ),
+    ],
+  },
+];
+
+export const mockMediaArticles: MediaArticleDocument[] = [
+  {
+    _id: "media-interview-sina",
+    _type: "mediaArticle",
+    titleFa: "مصاحبه با دکتر بابک سینا: مسیر پارلمانی و آینده ایران",
+    slug: "interview-babak-sina-parliamentary-path",
+    articleType: "interview",
+    publishedAt: "2026-04-12T09:00:00.000Z",
+    updatedAt: "2026-04-14T12:00:00.000Z",
+    dekFa:
+      "گفت‌وگوی رسمی با دبیر نخست پارمان درباره چارچوب پادشاهی پارلمانی، قانون‌مداری، و نقش نهادهای مدنی.",
+    sourceLabel: "پارمان — واحد رسانه",
+    language: "fa",
+    authors: [mockAuthors[0]!],
+    showHeroImage: true,
+    status: "published",
+    seo: {
+      metaTitle: "مصاحبه با دکتر بابک سینا",
+      metaDescription:
+        "مصاحبه رسمی با دبیر نخست پارمان پادشاهی ایرانیان درباره مسیر پارلمانی و آینده ایران.",
+    },
+    bodyFa: [
+      h2("پرسش: چشم‌انداز پارمان چیست؟"),
+      block(
+        "پارمان تلاش می‌کند نیروهای ایران‌گرا را در چارچوبی شفاف و قانون‌مدار سازماندهی کند — بدون شعارزدگی و بدون وعده‌های غیرواقعی.",
+      ),
+      block(
+        "ما باور داریم مشروعیت سیاسی از مشارکت آگاهانه مردم و نهادهای مستقل می‌آید، نه از سرکوب.",
+      ),
+    ],
+    relatedReading: [
+      {
+        title: "بیانیه محکومیت موج اعدام‌ها",
+        href: "/archive/statement-condemning-executions",
+        meta: "بیانیه رسمی",
+      },
+      {
+        title: "مرامنامه حزب",
+        href: "/charter/motto",
+        meta: "اسناد",
       },
     ],
   },
@@ -204,6 +274,14 @@ export function getMockCharterBySlug(slug: string) {
 
 export function getAllMockStatementSlugs() {
   return mockStatements.map((s) => s.slug);
+}
+
+export function getMockMediaArticleBySlug(slug: string) {
+  return mockMediaArticles.find((a) => a.slug === slug) ?? null;
+}
+
+export function getAllMockMediaArticleSlugs() {
+  return mockMediaArticles.map((a) => a.slug);
 }
 
 export function getMockStatementsList(): StatementListItem[] {

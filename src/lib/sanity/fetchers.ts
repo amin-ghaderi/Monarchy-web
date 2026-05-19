@@ -1,11 +1,14 @@
 import type {
   CharterDocument,
+  MediaArticleDocument,
   StatementDocument,
   StatementListItem,
 } from "@/types/content";
 import {
+  getAllMockMediaArticleSlugs,
   getAllMockStatementSlugs,
   getMockCharterBySlug,
+  getMockMediaArticleBySlug,
   getMockStatementBySlug,
   getMockStatementsList,
 } from "@/lib/content/mock-data";
@@ -14,6 +17,8 @@ import { sanityClient, sanityConfigured } from "./client";
 import {
   charterBySlugQuery,
   charterSlugsQuery,
+  mediaArticleBySlugQuery,
+  mediaArticleSlugsQuery,
   statementBySlugQuery,
   statementSlugsQuery,
   statementsListQuery,
@@ -67,6 +72,30 @@ export async function fetchCharterBySlug(
   }
 
   return getMockCharterBySlug(slug);
+}
+
+export async function fetchMediaArticleBySlug(
+  slug: string,
+): Promise<MediaArticleDocument | null> {
+  if (sanityConfigured) {
+    const doc = await sanityClient.fetch<MediaArticleDocument | null>(
+      mediaArticleBySlugQuery,
+      { slug },
+      { next: { tags: [`mediaArticle:${slug}`] } },
+    );
+    if (doc) return doc;
+  }
+
+  return getMockMediaArticleBySlug(slug);
+}
+
+export async function fetchAllMediaArticleSlugs(): Promise<string[]> {
+  if (sanityConfigured) {
+    const slugs = await sanityClient.fetch<string[]>(mediaArticleSlugsQuery);
+    if (slugs?.length) return slugs;
+  }
+
+  return getAllMockMediaArticleSlugs();
 }
 
 export async function fetchAllCharterSlugs(): Promise<string[]> {

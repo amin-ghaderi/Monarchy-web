@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { EditorialPageHeader } from "@/components/editorial/editorial-page-header";
 import { PageContainer } from "@/components/layout/page-container";
 import { createContentMetadata } from "@/lib/seo/metadata";
 import { cn } from "@/lib/utils";
@@ -26,16 +27,11 @@ const contactBlocks = [
 export default function ContactPage() {
   return (
     <PageContainer variant="institutional">
-      <header className="border-b border-mist pb-8">
-        <p className="text-[length:var(--font-size-label)] font-medium text-meta">تماس</p>
-        <h1 className="mt-2 text-[length:var(--font-size-h1)] font-semibold leading-[var(--line-height-heading)] text-ink">
-          ارتباط با پارمان
-        </h1>
-        <p className="mt-4 max-w-2xl text-ink-secondary">
-          برای حفظ امنیت و دقت پاسخ‌گویی، لطفاً موضوع پیام خود را مشخص کنید. پاسخ‌ها
-          ممکن است تا چند روز کاری طول بکشد.
-        </p>
-      </header>
+      <EditorialPageHeader
+        label="تماس"
+        title="ارتباط با پارمان"
+        description="برای حفظ امنیت و دقت پاسخ‌گویی، لطفاً موضوع پیام خود را مشخص کنید. پاسخ‌ها ممکن است تا چند روز کاری طول بکشد."
+      />
 
       <div className="mt-10 grid gap-8 md:grid-cols-2">
         {contactBlocks.map((block) => (

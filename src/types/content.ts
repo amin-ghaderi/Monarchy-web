@@ -4,6 +4,8 @@ export type PublishStatus = "draft" | "published" | "archived";
 
 export type StatementType = "official" | "press" | "security" | "amendment";
 
+export type MediaArticleType = "interview" | "analysis" | "appearance" | "editorial";
+
 export type ContentLanguage = "fa" | "en" | "bilingual";
 
 export type SeoFields = {
@@ -72,6 +74,31 @@ export type CharterDocument = {
   pdfUrl?: string;
   status: PublishStatus;
   seo?: SeoFields;
+};
+
+export type MediaArticleDocument = {
+  _id: string;
+  _type: "mediaArticle";
+  titleFa: string;
+  titleEn?: string;
+  slug: string;
+  articleType: MediaArticleType;
+  publishedAt: string;
+  updatedAt?: string;
+  dekFa?: string;
+  sourceLabel?: string;
+  language: ContentLanguage;
+  bodyFa: PortableTextBlock[];
+  authors?: PersonSummary[];
+  showHeroImage?: boolean;
+  pdfUrl?: string;
+  status: PublishStatus;
+  seo?: SeoFields;
+  relatedReading?: Array<{
+    title: string;
+    href: string;
+    meta?: string;
+  }>;
 };
 
 export const CHARTER_ROUTE_BY_DOC_TYPE: Record<

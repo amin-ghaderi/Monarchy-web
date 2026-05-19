@@ -75,6 +75,38 @@ export const charterSlugsQuery = groq`
   *[_type == "charterDocument" && status == "published"].slug.current
 `;
 
+export const mediaArticleBySlugQuery = groq`
+  *[_type == "mediaArticle" && slug.current == $slug && status == "published"][0]{
+    _id,
+    _type,
+    titleFa,
+    titleEn,
+    "slug": slug.current,
+    articleType,
+    publishedAt,
+    updatedAt,
+    dekFa,
+    sourceLabel,
+    language,
+    bodyFa,
+    showHeroImage,
+    "authors": authors[]->{
+      _id,
+      nameFa,
+      nameEn,
+      roleFa,
+      "slug": slug.current
+    },
+    "pdfUrl": pdfAsset.asset->url,
+    status,
+    seo ${seoProjection}
+  }
+`;
+
+export const mediaArticleSlugsQuery = groq`
+  *[_type == "mediaArticle" && status == "published"].slug.current
+`;
+
 export const siteSettingsQuery = groq`
   *[_type == "siteSettings"][0]{
     siteTitle,

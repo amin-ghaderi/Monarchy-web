@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 
-import { ArchiveFiltersPlaceholder } from "@/components/archive/archive-filters";
-import { StatementCard } from "@/components/archive/statement-card";
+import { ArchiveEmptyState } from "@/components/archive/archive-empty-state";
+import { ArchiveListItem } from "@/components/archive/archive-list-item";
+import { ArchivePaginationPlaceholder } from "@/components/archive/archive-pagination";
+import { ArchiveToolbar } from "@/components/archive/archive-toolbar";
+import { EditorialPageHeader } from "@/components/editorial/editorial-page-header";
 import { PageContainer } from "@/components/layout/page-container";
+import { groupByJalaliYear } from "@/lib/content/group-by-period";
 import { fetchStatementsList } from "@/lib/sanity/fetchers";
 import { createContentMetadata } from "@/lib/seo/metadata";
 
@@ -12,37 +16,58 @@ export const metadata: Metadata = createContentMetadata({
   path: "/archive",
 });
 
+function publicationCountLabel(count: number) {
+  if (count === 0) return "هنوز بیانیه‌ای منتشر نشده";
+  if (count === 1) return "۱ بیانیه منتشر شده";
+  return `${count.toLocaleString("fa-IR")} بیانیه منتشر شده`;
+}
+
 export default async function ArchivePage() {
   const statements = await fetchStatementsList();
+  const groups = groupByJalaliYear(statements);
 
   return (
     <PageContainer variant="institutional">
-      <header className="border-b border-mist pb-8">
-        <p className="text-[length:var(--font-size-label)] font-medium text-meta">
-          آرشیو رسانه
+      <EditorialPageHeader
+        label="آرشیو رسانه"
+        title="بیانیه‌ها"
+        description="بیانیه‌ها و اطلاعیه‌های رسمی پارمان پادشاهی ایرانیان — مستند، قابل استناد، و منتشرشده به‌صورت عمومی."
+      >
+        <p className="mt-6 text-[length:var(--font-size-meta)] text-meta">
+          {publicationCountLabel(statements.length)}
         </p>
-        <h1 className="mt-2 text-[length:var(--font-size-h1)] font-semibold leading-[var(--line-height-heading)] text-ink">
-          بیانیه‌ها
-        </h1>
-        <p className="mt-4 max-w-2xl text-ink-secondary">
-          بیانیه‌ها و اطلاعیه‌های رسمی پارمان پادشاهی ایرانیان — مستند، قابل استناد،
-          و منتشرشده به‌صورت عمومی.
-        </p>
-      </header>
+      </EditorialPageHeader>
 
       <div className="mt-8">
-        <ArchiveFiltersPlaceholder />
+        <ArchiveToolbar />
       </div>
 
-      <section className="mt-10 space-y-8" aria-label="فهرست بیانیه‌ها">
-        {statements.length ? (
-          statements.map((statement) => (
-            <StatementCard key={statement._id} statement={statement} />
-          ))
-        ) : (
-          <p className="text-meta">در حال حاضر بیانیه‌ای منتشر نشده است.</p>
-        )}
-      </section>
+      {statements.length === 0 ? (
+        <div className="mt-10">
+          <ArchiveEmptyState />
+        </div>
+      ) : (
+        <div className="mt-10 divide-y divide-mist">
+          {groups.map((group) => (
+            <section key={group.periodKey} className="py-2 first:pt-0">
+              <h2 className="mb-2 pt-6 text-[length:var(--font-size-label)] font-semibold text-meta first:pt-0">
+                {group.periodLabel}
+              </h2>
+              <div className="divide-y divide-mist/80">
+                {group.items.map((statement) => (
+                  <ArchiveListItem key={statement._id} statement={statement} />
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      )}
+
+      {statements.length > 0 ? (
+        <div className="mt-4">
+          <ArchivePaginationPlaceholder />
+        </div>
+      ) : null}
     </PageContainer>
   );
 }
