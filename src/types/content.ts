@@ -21,6 +21,16 @@ export type PersonSummary = {
   slug: string;
 };
 
+export type StatementListItem = {
+  _id: string;
+  titleFa: string;
+  slug: string;
+  statementType: StatementType;
+  publishedAt: string;
+  summary?: string;
+  seo?: SeoFields;
+};
+
 export type StatementDocument = {
   _id: string;
   _type: "statement";

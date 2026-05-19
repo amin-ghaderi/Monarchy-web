@@ -1,4 +1,10 @@
-import type { CharterDocument, PersonSummary, StatementDocument } from "@/types/content";
+import { excerptFromPortableText } from "@/lib/content/excerpt";
+import type {
+  CharterDocument,
+  PersonSummary,
+  StatementDocument,
+  StatementListItem,
+} from "@/types/content";
 
 let mockKeyCounter = 0;
 const nextKey = (prefix: string) => `${prefix}-${++mockKeyCounter}`;
@@ -198,4 +204,22 @@ export function getMockCharterBySlug(slug: string) {
 
 export function getAllMockStatementSlugs() {
   return mockStatements.map((s) => s.slug);
+}
+
+export function getMockStatementsList(): StatementListItem[] {
+  return [...mockStatements]
+    .sort(
+      (a, b) =>
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
+    )
+    .map((statement) => ({
+      _id: statement._id,
+      titleFa: statement.titleFa,
+      slug: statement.slug,
+      statementType: statement.statementType,
+      publishedAt: statement.publishedAt,
+      summary:
+        statement.seo?.metaDescription ??
+        excerptFromPortableText(statement.bodyFa),
+    }));
 }

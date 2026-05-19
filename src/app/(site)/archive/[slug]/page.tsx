@@ -43,8 +43,8 @@ export default async function StatementPage({ params }: PageProps) {
   }
 
   return (
-    <main className="min-h-full bg-ground">
+    <div className="bg-ground">
       <StatementView statement={statement} />
-    </main>
+    </div>
   );
 }

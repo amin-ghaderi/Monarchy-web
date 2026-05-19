@@ -1,8 +1,13 @@
-import type { CharterDocument, StatementDocument } from "@/types/content";
+import type {
+  CharterDocument,
+  StatementDocument,
+  StatementListItem,
+} from "@/types/content";
 import {
   getAllMockStatementSlugs,
   getMockCharterBySlug,
   getMockStatementBySlug,
+  getMockStatementsList,
 } from "@/lib/content/mock-data";
 
 import { sanityClient, sanityConfigured } from "./client";
@@ -11,6 +16,7 @@ import {
   charterSlugsQuery,
   statementBySlugQuery,
   statementSlugsQuery,
+  statementsListQuery,
 } from "./queries";
 
 export async function fetchStatementBySlug(
@@ -26,6 +32,17 @@ export async function fetchStatementBySlug(
   }
 
   return getMockStatementBySlug(slug);
+}
+
+export async function fetchStatementsList(): Promise<StatementListItem[]> {
+  if (sanityConfigured) {
+    const items = await sanityClient.fetch<StatementListItem[]>(
+      statementsListQuery,
+    );
+    if (items?.length) return items;
+  }
+
+  return getMockStatementsList();
 }
 
 export async function fetchAllStatementSlugs(): Promise<string[]> {

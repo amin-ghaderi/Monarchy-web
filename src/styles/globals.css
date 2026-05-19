@@ -62,3 +62,17 @@ body {
   font-feature-settings: "kern" 1;
   text-rendering: optimizeLegibility;
 }
+
+/* Foundational interaction polish (Sprint 2) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+a {
+  text-underline-offset: 0.15em;
+}

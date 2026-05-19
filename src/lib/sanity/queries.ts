@@ -36,6 +36,17 @@ export const statementSlugsQuery = groq`
   *[_type == "statement" && status == "published"].slug.current
 `;
 
+export const statementsListQuery = groq`
+  *[_type == "statement" && status == "published"] | order(publishedAt desc) {
+    _id,
+    titleFa,
+    "slug": slug.current,
+    statementType,
+    publishedAt,
+    "summary": seo.metaDescription
+  }
+`;
+
 export const charterBySlugQuery = groq`
   *[_type == "charterDocument" && slug.current == $slug && status == "published"][0]{
     _id,

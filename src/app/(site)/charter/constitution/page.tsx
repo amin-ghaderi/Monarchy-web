@@ -6,11 +6,11 @@ import { Breadcrumb } from "@/components/editorial/breadcrumb";
 import { fetchCharterBySlug } from "@/lib/sanity/fetchers";
 import { createContentMetadata } from "@/lib/seo/metadata";
 
-const SLUG = "motto";
+const SLUG = "constitution";
 
 export async function generateMetadata(): Promise<Metadata> {
   const doc = await fetchCharterBySlug(SLUG);
-  if (!doc) return { title: "مرامنامه" };
+  if (!doc) return { title: "اساسنامه" };
 
   return createContentMetadata({
     title: doc.titleFa,
@@ -20,12 +20,12 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default async function CharterMottoPage() {
+export default async function CharterConstitutionPage() {
   const doc = await fetchCharterBySlug(SLUG);
   if (!doc) notFound();
 
   return (
-    <main className="min-h-full bg-surface-paper">
+    <div className="bg-surface-paper">
       <div className="border-b border-mist bg-ground">
         <div className="mx-auto max-w-4xl px-5 py-6 sm:px-6">
           <Breadcrumb
@@ -38,6 +38,6 @@ export default async function CharterMottoPage() {
         </div>
       </div>
       <CharterReader document={doc} />
-    </main>
+    </div>
   );
 }

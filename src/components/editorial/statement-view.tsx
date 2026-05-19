@@ -20,7 +20,7 @@ export function StatementView({ statement }: StatementViewProps) {
         className="mb-8"
         items={[
           { label: "خانه", href: "/" },
-          { label: "رسانه", href: "/archive" },
+          { label: "بیانیه‌ها", href: "/archive" },
           { label: typeLabel },
         ]}
       />
