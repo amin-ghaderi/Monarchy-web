@@ -1,0 +1,127 @@
+/**
+ * Design tokens — Phase 5 semantic system.
+ * Components must use Tailwind theme aliases, not raw hex.
+ */
+
+:root {
+  /* ——— Color: ground & ink ——— */
+  --color-ivory-50: #faf8f4;
+  --color-ivory-100: #f3efe8;
+  --color-ink-900: #141310;
+  --color-ink-700: #2a2723;
+  --color-stone-500: #6b6560;
+  --color-stone-400: #8a847c;
+  --color-mist-200: #e5dfd4;
+  --color-mist-100: #f0ebe3;
+
+  /* ——— Color: lapis (institutional action) ——— */
+  --color-lapis-700: #1a3352;
+  --color-lapis-600: #1e3a5f;
+  --color-lapis-500: #2a4f78;
+  --color-lapis-100: #e8eef5;
+
+  /* ——— Color: dynasty gold (ceremonial, restricted) ——— */
+  --color-gold-600: #9a7b2f;
+  --color-gold-500: #b8963e;
+  --color-gold-400: #c9a84f;
+  --color-gold-100: #f5edd8;
+
+  /* ——— Color: cinema (atmosphere sections only) ——— */
+  --color-obsidian-900: #0e0d0b;
+  --color-obsidian-800: #1a1816;
+  --color-moon-100: #ede9e1;
+  --color-moon-300: #c9c4bb;
+
+  /* ——— Color: paper & semantic ——— */
+  --color-paper: #fffefb;
+  --color-success-600: #2f5e4e;
+  --color-error-600: #7a3030;
+  --color-warning-600: #6b5728;
+
+  /* ——— Semantic surfaces ——— */
+  --color-ground: var(--color-ivory-50);
+  --color-surface-raised: var(--color-ivory-100);
+  --color-surface-sunken: #ede8e0;
+  --color-surface-paper: var(--color-paper);
+  --color-surface-inverse: var(--color-obsidian-900);
+
+  /* ——— Semantic text ——— */
+  --color-text-primary: var(--color-ink-900);
+  --color-text-secondary: var(--color-ink-700);
+  --color-text-meta: var(--color-stone-500);
+  --color-text-placeholder: var(--color-stone-400);
+  --color-text-inverse: var(--color-moon-100);
+  --color-text-link: var(--color-lapis-600);
+
+  /* ——— Borders ——— */
+  --color-border-default: var(--color-mist-200);
+  --color-border-strong: var(--color-stone-400);
+  --color-border-focus: var(--color-lapis-600);
+  --color-border-accent: var(--color-gold-500);
+
+  /* ——— Spacing (base unit 8px) ——— */
+  --space-unit: 8px;
+  --space-2xs: calc(var(--space-unit) * 0.5);
+  --space-xs: var(--space-unit);
+  --space-sm: calc(var(--space-unit) * 2);
+  --space-md: calc(var(--space-unit) * 3);
+  --space-lg: calc(var(--space-unit) * 4);
+  --space-xl: calc(var(--space-unit) * 6);
+  --space-2xl: calc(var(--space-unit) * 8);
+  --space-3xl: calc(var(--space-unit) * 12);
+  --space-4xl: calc(var(--space-unit) * 16);
+  --space-5xl: calc(var(--space-unit) * 20);
+
+  /* ——— Radius ——— */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+
+  /* ——— Motion ——— */
+  --motion-l0: 150ms;
+  --motion-l1: 400ms;
+  --motion-l2: 600ms;
+  --motion-l3: 900ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+
+  /* ——— Typography scale (px) ——— */
+  --font-size-display: 3.25rem;
+  --font-size-h1: 2.5rem;
+  --font-size-h2: 1.75rem;
+  --font-size-h3: 1.375rem;
+  --font-size-lead: 1.25rem;
+  --font-size-body: 1.1875rem;
+  --font-size-body-legal: 1.25rem;
+  --font-size-meta: 0.875rem;
+  --font-size-label: 0.75rem;
+
+  --line-height-display: 1.15;
+  --line-height-heading: 1.25;
+  --line-height-body: 1.75;
+  --line-height-body-legal: 1.85;
+  --line-height-meta: 1.5;
+
+  /* ——— Shadows ——— */
+  --shadow-soft: 0 4px 24px rgb(20 19 16 / 6%);
+  --shadow-modal: 0 24px 64px rgb(20 19 16 / 12%);
+
+  /* ——— Z-index ——— */
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --font-size-display: 2.25rem;
+    --font-size-h1: 1.75rem;
+    --font-size-h2: 1.375rem;
+    --font-size-h3: 1.125rem;
+    --font-size-body: 1.0625rem;
+    --font-size-lead: 1.125rem;
+  }
+}

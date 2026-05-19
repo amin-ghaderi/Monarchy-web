@@ -1,0 +1,64 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+@theme inline {
+  /* Colors */
+  --color-ground: var(--color-ground);
+  --color-surface-raised: var(--color-surface-raised);
+  --color-surface-sunken: var(--color-surface-sunken);
+  --color-surface-paper: var(--color-surface-paper);
+  --color-surface-inverse: var(--color-surface-inverse);
+
+  --color-ink: var(--color-text-primary);
+  --color-ink-secondary: var(--color-text-secondary);
+  --color-meta: var(--color-text-meta);
+  --color-link: var(--color-text-link);
+
+  --color-lapis-700: var(--color-lapis-700);
+  --color-lapis-600: var(--color-lapis-600);
+  --color-lapis-100: var(--color-lapis-100);
+
+  --color-gold-500: var(--color-gold-500);
+  --color-gold-100: var(--color-gold-100);
+
+  --color-mist: var(--color-border-default);
+  --color-success: var(--color-success-600);
+  --color-error: var(--color-error-600);
+
+  /* Fonts */
+  --font-sans: var(--font-vazirmatn), "Tahoma", "Arial", sans-serif;
+  --font-legal: var(--font-amiri), "Noto Naskh Arabic", "Times New Roman", serif;
+  --font-latin: var(--font-inter), "Segoe UI", system-ui, sans-serif;
+
+  /* Spacing */
+  --spacing-u: var(--space-unit);
+  --spacing-section: var(--space-3xl);
+
+  /* Radius */
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+
+  /* Shadows */
+  --shadow-soft: var(--shadow-soft);
+  --shadow-modal: var(--shadow-modal);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: var(--color-ground);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  font-feature-settings: "kern" 1;
+  text-rendering: optimizeLegibility;
+}
