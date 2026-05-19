@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import type { SeoFields } from "@/types/content";
+
 const siteName = "پارمان پادشاهی ایرانیان";
 
 export const siteConfig = {
@@ -31,9 +33,38 @@ export function createBaseMetadata(overrides?: Metadata): Metadata {
   };
 }
 
-/**
- * Per-route metadata from CMS `seo` fields — implemented in Sprint 1.
- */
-export function createContentMetadata(): Metadata {
-  return createBaseMetadata();
+export type ContentMetadataInput = {
+  title: string;
+  description?: string;
+  path: string;
+  seo?: SeoFields;
+  ogType?: "website" | "article";
+};
+
+export function createContentMetadata({
+  title,
+  description,
+  path,
+  seo,
+  ogType = "website",
+}: ContentMetadataInput): Metadata {
+  const metaTitle = seo?.metaTitle ?? title;
+  const metaDescription = seo?.metaDescription ?? description ?? siteConfig.description;
+  const canonical = new URL(path, siteConfig.url).toString();
+
+  return createBaseMetadata({
+    title: metaTitle,
+    description: metaDescription,
+    alternates: { canonical },
+    openGraph: {
+      type: ogType,
+      locale: siteConfig.locale,
+      siteName: siteConfig.name,
+      title: metaTitle,
+      description: metaDescription,
+      url: canonical,
+      ...(seo?.ogImageUrl ? { images: [{ url: seo.ogImageUrl }] } : {}),
+    },
+    robots: seo?.noIndex ? { index: false, follow: false } : undefined,
+  });
 }
