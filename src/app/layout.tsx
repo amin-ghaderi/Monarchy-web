@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 
+import { MotionPreferenceSync } from "@/components/motion/motion-preference-sync";
 import { fontVariables, vazirmatn } from "@/lib/fonts";
 import { createBaseMetadata } from "@/lib/seo/metadata";
 
@@ -25,7 +26,10 @@ export default function RootLayout({
       className={`${fontVariables} ${vazirmatn.className} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full bg-ground text-ink">{children}</body>
+      <body className="min-h-full bg-ground text-ink">
+        <MotionPreferenceSync />
+        {children}
+      </body>
     </html>
   );
 }

@@ -45,6 +45,22 @@
   --color-surface-paper: var(--color-paper);
   --color-surface-inverse: var(--color-obsidian-900);
 
+  /* ——— Archival Continuum: chronicle (Nocturne) ——— */
+  --color-surface-chronicle: var(--color-obsidian-900);
+  --color-surface-chronicle-elevated: var(--color-obsidian-800);
+  --color-text-on-chronicle: var(--color-moon-100);
+  --color-text-on-chronicle-muted: var(--color-moon-300);
+
+  /* Era washes — ≤6% mix, derived from existing palette */
+  --era-tint-1: color-mix(in srgb, var(--color-lapis-600) 6%, transparent);
+  --era-tint-2: color-mix(in srgb, var(--color-stone-500) 5%, transparent);
+  --era-tint-3: color-mix(in srgb, var(--color-gold-500) 4%, transparent);
+  --era-tint-4: color-mix(in srgb, var(--color-lapis-500) 5%, transparent);
+
+  /* Atmosphere */
+  --grain-opacity: 0.025;
+  --motion-chapter: var(--motion-l2);
+
   /* ——— Semantic text ——— */
   --color-text-primary: var(--color-ink-900);
   --color-text-secondary: var(--color-ink-700);

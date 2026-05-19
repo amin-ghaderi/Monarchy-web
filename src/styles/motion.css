@@ -1,0 +1,41 @@
+/**
+ * Archival Continuum — scroll-driven and motion-preference utilities.
+ * Primitives attach these classes in later sprints; no visible change until used.
+ */
+
+@layer utilities {
+  .duration-motion-chapter {
+    transition-duration: var(--motion-chapter);
+  }
+
+  .ease-editorial {
+    transition-timing-function: var(--ease-out);
+  }
+}
+
+/* Scroll progress — enabled only when motion is allowed (see data-motion on html) */
+@supports (animation-timeline: scroll()) {
+  html[data-motion="full"] .ac-scroll-progress {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline: 0;
+    z-index: var(--z-sticky);
+    height: 2px;
+    pointer-events: none;
+    transform-origin: inline start;
+    scale: 0 1;
+    background-color: var(--color-lapis-600);
+    animation: ac-scroll-progress linear both;
+    animation-timeline: scroll(root);
+  }
+
+  @keyframes ac-scroll-progress {
+    to {
+      scale: 1 1;
+    }
+  }
+}
+
+html[data-motion="reduced"] .ac-scroll-progress {
+  display: none;
+}

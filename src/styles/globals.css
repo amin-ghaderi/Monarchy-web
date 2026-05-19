@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./tokens.css";
+@import "./motion.css";
 
 @theme inline {
   /* Colors */
@@ -8,6 +9,15 @@
   --color-surface-sunken: var(--color-surface-sunken);
   --color-surface-paper: var(--color-surface-paper);
   --color-surface-inverse: var(--color-surface-inverse);
+  --color-surface-chronicle: var(--color-surface-chronicle);
+  --color-surface-chronicle-elevated: var(--color-surface-chronicle-elevated);
+  --color-on-chronicle: var(--color-text-on-chronicle);
+  --color-on-chronicle-muted: var(--color-text-on-chronicle-muted);
+
+  --color-era-tint-1: var(--era-tint-1);
+  --color-era-tint-2: var(--era-tint-2);
+  --color-era-tint-3: var(--era-tint-3);
+  --color-era-tint-4: var(--era-tint-4);
 
   --color-ink: var(--color-text-primary);
   --color-ink-secondary: var(--color-text-secondary);
@@ -41,6 +51,10 @@
   /* Shadows */
   --shadow-soft: var(--shadow-soft);
   --shadow-modal: var(--shadow-modal);
+
+  /* Motion & atmosphere (Archival Continuum) */
+  --opacity-grain: var(--grain-opacity);
+  --duration-chapter: var(--motion-chapter);
 }
 
 html {
