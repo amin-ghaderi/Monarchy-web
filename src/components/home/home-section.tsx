@@ -6,6 +6,8 @@ type HomeSectionProps = {
   id?: string;
   /** First section — no top rule */
   lead?: boolean;
+  /** Full-bleed atmosphere behind content (hero only) */
+  atmosphere?: React.ReactNode;
   /** Visual weight of the band */
   tone?: "masthead" | "default" | "quiet";
 };
@@ -21,6 +23,7 @@ export function HomeSection({
   className,
   id,
   lead = false,
+  atmosphere,
   tone = "default",
 }: HomeSectionProps) {
   return (
@@ -30,10 +33,15 @@ export function HomeSection({
         "border-mist px-5 sm:px-6",
         !lead && "border-t",
         toneClasses[tone],
+        atmosphere && "relative isolate overflow-hidden",
+        atmosphere && lead && "ac-hero-section",
         className,
       )}
     >
-      <div className="mx-auto w-full max-w-5xl">{children}</div>
+      {atmosphere}
+      <div className={cn("mx-auto w-full max-w-5xl", atmosphere && "ac-hero-content")}>
+        {children}
+      </div>
     </section>
   );
 }

@@ -18,26 +18,26 @@ export function HomeChronicleInterlude() {
       <section
         aria-label="تداوم تاریخی"
         className={cn(
-          "relative flex min-h-[35vh] max-h-[50vh] items-center",
-          "border-y border-surface-chronicle-elevated bg-surface-chronicle px-5 py-14 sm:px-6 sm:py-16",
+          "ac-chronicle-section relative flex min-h-[35vh] max-h-[50vh] items-center",
+          "border-y border-surface-chronicle-elevated px-5 py-14 sm:px-6 sm:py-16",
         )}
       >
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[var(--grain-opacity)]"
-          aria-hidden
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-            backgroundSize: "128px 128px",
-          }}
-        />
-        <div className="relative mx-auto w-full max-w-3xl text-center">
+        <div className="ac-chronicle-backdrop" aria-hidden>
+          <div className="ac-chronicle-depth" />
+          <div className="ac-chronicle-grain" />
+        </div>
+        <div className="relative z-[1] mx-auto w-full max-w-3xl text-center">
           <HomeReveal>
-            <blockquote className="font-legal text-[length:var(--font-size-lead)] leading-[1.85] text-on-chronicle sm:text-[length:var(--font-size-h3)]">
+            <blockquote className="ac-chronicle-quote font-legal text-[length:var(--font-size-lead)] leading-[1.9] text-on-chronicle sm:text-[length:var(--font-size-h3)] sm:leading-[1.85]">
               {interludeLines.map((line, index) => (
                 <span
                   key={line}
-                  className={index === 0 ? "block" : "mt-2 block text-on-chronicle-muted"}
+                  className={cn(
+                    "block",
+                    index === 0
+                      ? undefined
+                      : "ac-chronicle-quote-line-muted mt-3 text-on-chronicle-muted",
+                  )}
                 >
                   {line}
                 </span>

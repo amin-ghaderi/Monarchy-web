@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "./tokens.css";
 @import "./motion.css";
+@import "./home-atmosphere.css";
 
 @theme inline {
   /* Colors */

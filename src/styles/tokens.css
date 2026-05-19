@@ -61,6 +61,13 @@
   --grain-opacity: 0.025;
   --motion-chapter: var(--motion-l2);
 
+  /* Homepage atmosphere (Sprint 4) — discovered, not designed */
+  --atmosphere-grain-opacity: 0.035;
+  --atmosphere-contour-opacity: 0.025;
+  --atmosphere-geometry-opacity: 0.015;
+  --atmosphere-institutional-border-opacity: 0.04;
+  --chronicle-grain-opacity: 0.03;
+
   /* ——— Semantic text ——— */
   --color-text-primary: var(--color-ink-900);
   --color-text-secondary: var(--color-ink-700);

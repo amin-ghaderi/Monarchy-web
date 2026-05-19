@@ -1,0 +1,138 @@
+/**
+ * Homepage atmosphere — hero + chronicle only (Sprint 4).
+ * CSS-first, static, reduced-motion safe (no decorative animation).
+ */
+
+/* ——— Hero shell ——— */
+.ac-hero-section {
+  background: linear-gradient(
+    180deg,
+    var(--color-ground) 0%,
+    color-mix(in srgb, var(--color-ivory-100) 40%, var(--color-ground)) 100%
+  );
+}
+
+.ac-hero-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Grain — dominant layer */
+.ac-hero-grain {
+  position: absolute;
+  inset: 0;
+  opacity: var(--atmosphere-grain-opacity);
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+/* Contours — secondary, abstract (no cartographic border) */
+.ac-hero-contours {
+  position: absolute;
+  inset: 0;
+  opacity: var(--atmosphere-contour-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 320' fill='none'%3E%3Cpath d='M24 200c48-36 112-28 168-12s120 8 184-20' stroke='%231e3a5f' stroke-width='0.6'/%3E%3Cpath d='M8 248c72-16 136-8 208 4s152 12 264-28' stroke='%236b6560' stroke-width='0.45'/%3E%3Cpath d='M40 160c56 24 104 16 156 28s108-4 172-36' stroke='%231e3a5f' stroke-width='0.35'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 88% 18%;
+  background-size: min(85vw, 640px) auto;
+}
+
+/* Peripheral geometry — manuscript / arch rhythm */
+.ac-hero-geometry {
+  position: absolute;
+  inset: 0;
+  opacity: var(--atmosphere-geometry-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 160' fill='none'%3E%3Cpath d='M100 8v72a36 36 0 0 1-72 0' stroke='%238a847c' stroke-width='0.5'/%3E%3Cline x1='100' y1='8' x2='100' y2='140' stroke='%23e5dfd4' stroke-width='0.4'/%3E%3Cline x1='88' y1='24' x2='112' y2='24' stroke='%23e5dfd4' stroke-width='0.35'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 100% 0;
+  background-size: 7rem auto;
+}
+
+.ac-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.ac-dek-institutional {
+  border-inline-start-width: 0;
+  padding-inline-start: 0;
+}
+
+@media (min-width: 1024px) {
+  .ac-dek-institutional {
+    border-inline-start-width: 1px;
+    border-inline-start-style: solid;
+    border-inline-start-color: color-mix(
+      in srgb,
+      var(--color-lapis-600) 4%,
+      transparent
+    );
+    padding-inline-start: var(--space-lg);
+  }
+}
+
+/* Mobile calm — softer atmosphere */
+@media (max-width: 640px) {
+  .ac-hero-grain {
+    opacity: calc(var(--atmosphere-grain-opacity) * 0.75);
+  }
+
+  .ac-hero-contours {
+    opacity: calc(var(--atmosphere-contour-opacity) * 0.65);
+    background-size: min(95vw, 480px) auto;
+  }
+
+  .ac-hero-geometry {
+    opacity: calc(var(--atmosphere-geometry-opacity) * 0.5);
+    background-size: 5rem auto;
+  }
+}
+
+/* ——— Chronicle interlude ——— */
+.ac-chronicle-section {
+  background-color: var(--color-surface-chronicle);
+}
+
+.ac-chronicle-depth {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 85% 70% at 50% 42%,
+    var(--color-obsidian-800) 0%,
+    var(--color-obsidian-900) 72%
+  );
+}
+
+.ac-chronicle-grain {
+  position: absolute;
+  inset: 0;
+  opacity: var(--chronicle-grain-opacity);
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.05' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+.ac-chronicle-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 9%,
+    #000 91%,
+    transparent 100%
+  );
+}
+
+.ac-chronicle-quote {
+  letter-spacing: 0.01em;
+}
+
+.ac-chronicle-quote-line-muted {
+  letter-spacing: 0.005em;
+}
