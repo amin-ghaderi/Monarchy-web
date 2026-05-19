@@ -1,3 +1,5 @@
+import { HomeChronicleInterlude } from "@/components/home/home-chronicle-interlude";
+import { HomeCinematicChrome } from "@/components/home/home-cinematic-chrome";
 import { HomeHistoryGateway } from "@/components/home/home-history-gateway";
 import { HomeLatestStatement } from "@/components/home/home-latest-statement";
 import { HomeParticipate } from "@/components/home/home-participate";
@@ -12,8 +14,10 @@ export default async function HomePage() {
 
   return (
     <div>
+      <HomeCinematicChrome />
       <HomePrologue />
       <HomePrinciples />
+      <HomeChronicleInterlude />
       {latestStatement ? <HomeLatestStatement statement={latestStatement} /> : null}
       <HomeHistoryGateway />
       <HomeParticipate />
