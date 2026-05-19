@@ -7,15 +7,23 @@ import { cn } from "@/lib/utils";
 
 type StatementCardProps = {
   statement: StatementListItem;
+  /** Featured panel for homepage; list style for archive */
+  variant?: "list" | "featured";
 };
 
-export function StatementCard({ statement }: StatementCardProps) {
+export function StatementCard({ statement, variant = "list" }: StatementCardProps) {
   const typeLabel = statementTypeLabels[statement.statementType];
   const dates = formatPublicationDates(statement.publishedAt);
   const summary = statement.summary?.trim();
 
   return (
-    <article className="border-b border-mist pb-8 last:border-b-0 last:pb-0">
+    <article
+      className={cn(
+        variant === "featured"
+          ? "rounded-md border border-mist bg-surface-paper p-5 sm:p-6"
+          : "border-b border-mist pb-8 last:border-b-0 last:pb-0",
+      )}
+    >
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[length:var(--font-size-label)] text-meta">
         <span className="rounded-sm bg-surface-sunken px-2 py-0.5">{typeLabel}</span>
         <time dateTime={statement.publishedAt}>{dates.jalali}</time>

@@ -1,16 +1,23 @@
-import { PageContainer } from "@/components/layout/page-container";
+import { HomeHistoryGateway } from "@/components/home/home-history-gateway";
+import { HomeLatestStatement } from "@/components/home/home-latest-statement";
+import { HomeParticipate } from "@/components/home/home-participate";
+import { HomePrinciples } from "@/components/home/home-principles";
+import { HomePrologue } from "@/components/home/home-prologue";
+import { HomeTrustFootnote } from "@/components/home/home-trust-footnote";
+import { fetchStatementsList } from "@/lib/sanity/fetchers";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const statements = await fetchStatementsList();
+  const latestStatement = statements[0] ?? null;
+
   return (
-    <PageContainer variant="institutional" className="flex min-h-[40vh] flex-col justify-center">
-      <p className="text-[length:var(--font-size-label)] font-medium text-meta">صفحه اصلی</p>
-      <h1 className="mt-2 text-[length:var(--font-size-h1)] font-semibold text-ink">
-        Homepage — Coming Soon
-      </h1>
-      <p className="mt-4 max-w-xl text-ink-secondary">
-        طراحی صفحه اصلی در فاز بعدی انجام می‌شود. برای مطالعه بیانیه‌ها و اسناد رسمی از
-        منوی بالا استفاده کنید.
-      </p>
-    </PageContainer>
+    <div>
+      <HomePrologue />
+      <HomePrinciples />
+      {latestStatement ? <HomeLatestStatement statement={latestStatement} /> : null}
+      <HomeHistoryGateway />
+      <HomeParticipate />
+      <HomeTrustFootnote />
+    </div>
   );
 }
