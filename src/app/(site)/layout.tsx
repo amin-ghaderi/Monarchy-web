@@ -1,16 +1,19 @@
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { fetchSiteSettings } from "@/lib/sanity/fetchers";
 
-export default function SiteLayout({
+export default async function SiteLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const settings = await fetchSiteSettings();
+
   return (
     <div className="flex min-h-full flex-col">
-      <SiteHeader />
+      <SiteHeader settings={settings} />
       <main className="flex-1">{children}</main>
-      <SiteFooter />
+      <SiteFooter settings={settings} />
     </div>
   );
 }

@@ -5,11 +5,17 @@ import Link from "next/link";
 
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { NavLink } from "@/components/layout/nav-link";
-import { participateCta, primaryNav } from "@/lib/navigation";
+import { primaryNav } from "@/lib/navigation";
+import type { SiteSettings } from "@/types/site";
 import { cn } from "@/lib/utils";
 
-export function SiteHeader() {
+type SiteHeaderProps = {
+  settings: SiteSettings;
+};
+
+export function SiteHeader({ settings }: SiteHeaderProps) {
   const [scrolled, setScrolled] = useState(false);
+  const participateLabel = settings.participateNavLabel ?? "مشارکت";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -33,11 +39,13 @@ export function SiteHeader() {
           )}
         >
           <span className="block text-sm font-semibold leading-tight text-ink sm:text-[0.9375rem]">
-            پارمان پادشاهی ایرانیان
+            {settings.organizationName}
           </span>
-          <span className="mt-0.5 block text-[length:var(--font-size-label)] text-meta">
-            Iranian Monarchy Party
-          </span>
+          {settings.organizationNameEn ? (
+            <span className="mt-0.5 block text-[length:var(--font-size-label)] text-meta">
+              {settings.organizationNameEn}
+            </span>
+          ) : null}
         </Link>
 
         <nav
@@ -51,15 +59,15 @@ export function SiteHeader() {
 
         <div className="ms-auto flex items-center gap-3">
           <Link
-            href={participateCta.href}
+            href="/participate"
             className={cn(
               "hidden rounded-md border border-lapis-600 px-3 py-1.5 text-[length:var(--font-size-meta)] font-medium text-lapis-700 sm:inline-flex",
               "hover:bg-lapis-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lapis-600",
             )}
           >
-            {participateCta.label}
+            {participateLabel}
           </Link>
-          <MobileNav />
+          <MobileNav settings={settings} />
         </div>
       </div>
     </header>

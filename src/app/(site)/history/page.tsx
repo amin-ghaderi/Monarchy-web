@@ -1,10 +1,11 @@
 import Link from "next/link";
 
 import { EraNav } from "@/components/history/era-nav";
+import { HistoryEmptyState } from "@/components/history/history-empty-state";
 import { HistoryTimeline } from "@/components/history/history-timeline";
 import { EditorialPageHeader } from "@/components/editorial/editorial-page-header";
 import { PageContainer } from "@/components/layout/page-container";
-import { getHistoryEras } from "@/lib/content/history-data";
+import { fetchHistoryTimeline } from "@/lib/sanity/fetchers";
 import { editorialSecondaryCta } from "@/lib/editorial/styles";
 import { createContentMetadata } from "@/lib/seo/metadata";
 import type { Metadata } from "next";
@@ -16,8 +17,9 @@ export const metadata: Metadata = createContentMetadata({
   path: "/history",
 });
 
-export default function HistoryPage() {
-  const eras = getHistoryEras();
+export default async function HistoryPage() {
+  const { eras } = await fetchHistoryTimeline();
+  const hasEras = eras.length > 0;
 
   return (
     <PageContainer variant="wide">
@@ -40,17 +42,24 @@ export default function HistoryPage() {
             شهروندان کمک می‌کند مواضع امروز را در بستر تصمیم‌های دیروز بفهمند.
           </p>
           <p className="text-[length:var(--font-size-meta)] text-meta">
-            این نسخهٔ اولیه (MVP) چهار دوره ثابت را پوشش می‌دهد. مستندات، تصاویر، و
-            ارجاعات تفصیلی در فازهای بعدی افزوده می‌شوند.
+            محتوای تاریخی از سامانه مدیریت محتوا منتشر می‌شود و پس از هر انتشار به‌روز
+            می‌گردد.
           </p>
         </div>
       </section>
 
-      <EraNav eras={eras} className="mt-10 hidden md:block" />
-
-      <div className="mt-10 md:mt-12">
-        <HistoryTimeline />
-      </div>
+      {hasEras ? (
+        <>
+          <EraNav eras={eras} className="mt-10 hidden md:block" />
+          <div className="mt-10 md:mt-12">
+            <HistoryTimeline eras={eras} />
+          </div>
+        </>
+      ) : (
+        <div className="mt-10">
+          <HistoryEmptyState />
+        </div>
+      )}
 
       <footer className="mt-14 flex flex-wrap gap-3 border-t border-mist pt-8">
         <Link href="/archive" className={editorialSecondaryCta}>

@@ -1,3 +1,7 @@
+/**
+ * Development-only mock timeline when Sanity has no published history content.
+ * Production uses fetchHistoryTimeline() from CMS.
+ */
 import type { HistoryEra, HistoryTimeline } from "@/types/history";
 
 const evidencePlaceholder = (id: string, label: string) => ({

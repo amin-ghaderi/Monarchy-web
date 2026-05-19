@@ -5,29 +5,62 @@ export const structure: StructureResolver = (S) =>
     .title("پارمان پادشاهی ایرانیان")
     .items([
       S.listItem()
-        .title("بیانیه‌ها")
+        .title("انتشارات")
         .child(
-          S.documentTypeList("statement")
-            .title("بیانیه‌ها")
-            .defaultOrdering([{ field: "publishedAt", direction: "desc" }]),
+          S.list()
+            .title("انتشارات")
+            .items([
+              S.listItem()
+                .title("بیانیه‌ها")
+                .child(
+                  S.documentTypeList("statement")
+                    .title("بیانیه‌ها")
+                    .defaultOrdering([{ field: "publishedAt", direction: "desc" }]),
+                ),
+              S.listItem()
+                .title("مطالب رسانه‌ای")
+                .child(
+                  S.documentTypeList("mediaArticle")
+                    .title("مطالب رسانه‌ای")
+                    .defaultOrdering([{ field: "publishedAt", direction: "desc" }]),
+                ),
+            ]),
         ),
       S.listItem()
-        .title("مطالب رسانه‌ای")
+        .title("تاریخ")
         .child(
-          S.documentTypeList("mediaArticle")
-            .title("مطالب رسانه‌ای")
-            .defaultOrdering([{ field: "publishedAt", direction: "desc" }]),
+          S.list()
+            .title("تاریخ")
+            .items([
+              S.listItem()
+                .title("دوره‌ها")
+                .child(
+                  S.documentTypeList("historyEra")
+                    .title("دوره‌های تاریخی")
+                    .defaultOrdering([{ field: "order", direction: "asc" }]),
+                ),
+              S.listItem()
+                .title("رویدادها")
+                .child(
+                  S.documentTypeList("historyEvent")
+                    .title("رویدادهای تاریخی")
+                    .defaultOrdering([
+                      { field: "order", direction: "asc" },
+                      { field: "yearSort", direction: "asc" },
+                    ]),
+                ),
+            ]),
         ),
       S.divider(),
       S.listItem()
-        .title("اسناد")
+        .title("اسناد منشور")
         .child(
           S.documentTypeList("charterDocument")
-            .title("اسناد منشور")
+            .title("اسناد")
             .defaultOrdering([{ field: "effectiveDate", direction: "desc" }]),
         ),
       S.listItem()
-        .title("رهبران")
+        .title("اشخاص")
         .child(
           S.documentTypeList("person")
             .title("اشخاص")

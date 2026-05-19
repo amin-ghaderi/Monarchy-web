@@ -107,10 +107,49 @@ export const mediaArticleSlugsQuery = groq`
   *[_type == "mediaArticle" && status == "published"].slug.current
 `;
 
+const historyEvidenceFields = `
+  "id": _key,
+  label,
+  href
+`;
+
+export const historyTimelineQuery = groq`
+  *[_type == "historyEra" && status == "published"] | order(order asc) {
+    "id": _id,
+    "slug": slug.current,
+    title,
+    timeframe,
+    intro,
+    summary,
+    featured,
+    deepDiveHref,
+    "evidence": evidence[]{${historyEvidenceFields}},
+    "events": *[
+      _type == "historyEvent" &&
+      status == "published" &&
+      era._ref == ^._id
+    ] | order(order asc, yearSort asc) {
+      "id": _id,
+      year,
+      yearSort,
+      title,
+      "description": shortDescription,
+      deepDiveHref,
+      "evidence": evidence[]{${historyEvidenceFields}}
+    }
+  }
+`;
+
 export const siteSettingsQuery = groq`
-  *[_type == "siteSettings"][0]{
+  *[_id == "siteSettings"][0]{
+    organizationName,
+    organizationNameEn,
     siteTitle,
     siteDescription,
+    institutionalDescription,
+    footerCopy,
+    participateNavLabel,
+    socialLinks[]{ label, url },
     pressEmail,
     officeEmail
   }

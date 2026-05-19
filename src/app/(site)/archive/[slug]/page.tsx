@@ -8,6 +8,8 @@ import {
 } from "@/lib/sanity/fetchers";
 import { createContentMetadata } from "@/lib/seo/metadata";
 
+export const dynamicParams = true;
+
 type PageProps = {
   params: Promise<{ slug: string }>;
 };

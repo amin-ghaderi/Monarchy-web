@@ -1,7 +1,8 @@
+import { editorialTextLink } from "@/lib/editorial/styles";
 import { cn } from "@/lib/utils";
 
 type EvidencePlaceholderProps = {
-  items?: Array<{ id: string; label: string }>;
+  items?: Array<{ id: string; label: string; href?: string }>;
   className?: string;
 };
 
@@ -15,7 +16,7 @@ export function EvidencePlaceholder({ items, className }: EvidencePlaceholderPro
         className,
       )}
       role="note"
-      aria-label="مستندات — به‌زودی"
+      aria-label="مستندات و منابع"
     >
       <p className="text-[length:var(--font-size-label)] font-medium text-meta">
         مستندات و منابع
@@ -26,8 +27,21 @@ export function EvidencePlaceholder({ items, className }: EvidencePlaceholderPro
             key={item.id}
             className="text-[length:var(--font-size-label)] text-meta before:me-2 before:content-['—']"
           >
-            {item.label}
-            <span className="me-1 text-meta/70"> (به‌زودی)</span>
+            {item.href ? (
+              <a
+                href={item.href}
+                className={editorialTextLink}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                {item.label}
+              </a>
+            ) : (
+              <>
+                {item.label}
+                <span className="me-1 text-meta/70"> (به‌زودی)</span>
+              </>
+            )}
           </li>
         ))}
       </ul>

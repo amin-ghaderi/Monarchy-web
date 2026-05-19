@@ -5,10 +5,15 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
 import { NavLink } from "@/components/layout/nav-link";
-import { participateCta, primaryNav } from "@/lib/navigation";
+import { primaryNav } from "@/lib/navigation";
+import type { SiteSettings } from "@/types/site";
 import { cn } from "@/lib/utils";
 
-export function MobileNav() {
+type MobileNavProps = {
+  settings: SiteSettings;
+};
+
+export function MobileNav({ settings }: MobileNavProps) {
   const [open, setOpen] = useState(false);
   const panelId = useId();
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -96,7 +101,7 @@ export function MobileNav() {
 
         <div className="mt-auto border-t border-mist pt-6">
           <Link
-            href={participateCta.href}
+            href="/participate"
             onClick={() => setOpen(false)}
             className={cn(
               "inline-flex w-full items-center justify-center rounded-md border border-lapis-600 px-4 py-2.5",
@@ -104,7 +109,7 @@ export function MobileNav() {
               "hover:bg-lapis-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lapis-600",
             )}
           >
-            {participateCta.label}
+            {settings.participateNavLabel ?? "مشارکت"}
           </Link>
         </div>
       </nav>
