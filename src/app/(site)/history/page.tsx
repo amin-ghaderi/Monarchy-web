@@ -1,119 +1,65 @@
 import Link from "next/link";
 
+import { EraNav } from "@/components/history/era-nav";
+import { HistoryTimeline } from "@/components/history/history-timeline";
 import { EditorialPageHeader } from "@/components/editorial/editorial-page-header";
 import { PageContainer } from "@/components/layout/page-container";
-import { editorialMutedCta, editorialSecondaryCta } from "@/lib/editorial/styles";
+import { getHistoryEras } from "@/lib/content/history-data";
+import { editorialSecondaryCta } from "@/lib/editorial/styles";
 import { createContentMetadata } from "@/lib/seo/metadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = createContentMetadata({
-  title: "تاریخ",
+  title: "تاریخ ایران",
   description:
-    "حافظه تاریخی و رویدادهای پارمان پادشاهی ایرانیان — مقدمه و چارچوب خط زمانی.",
+    "خط زمانی تاریخ معاصر ایران — چهار دوره مشروطه، پهلوی، و پس از انقلاب ۵۷. آرشیو نهادی پارمان پادشاهی ایرانیان.",
   path: "/history",
 });
 
-const eras = [
-  {
-    title: "بنیان‌گذاری و سازماندهی",
-    period: "۱۴۰۴ — ۱۴۰۵",
-    description:
-      "شکل‌گیری نهاد، تدوین اسناد بنیادین، و استقرار زبان رسمی انتشارات.",
-  },
-  {
-    title: "انتشارات و مواضع رسمی",
-    period: "۱۴۰۵ — کنون",
-    description:
-      "انتشار بیانیه‌ها، مصاحبه‌ها، و اسناد قابل استناد در فضای عمومی.",
-  },
-  {
-    title: "آینده — خط زمانی تعاملی",
-    period: "به‌زودی",
-    description:
-      "نمایش رویدادها، اسناد، و نقاط عطف در قالب خط زمانی قابل کاوش.",
-  },
-] as const;
-
 export default function HistoryPage() {
+  const eras = getHistoryEras();
+
   return (
-    <PageContainer variant="institutional">
+    <PageContainer variant="wide">
       <EditorialPageHeader
         label="تاریخ"
-        title="حافظه و رویدادهای نهاد"
-        description="تاریخ پارمان فقط گذشته نیست — مرجع فهم تصمیم‌ها، اسناد، و مسیر نهاد است."
+        title="خط زمانی تاریخ معاصر ایران"
+        description="چارچوبی نهادی برای فهم دوره‌ها، رویدادهای کلیدی، و پیوند آن‌ها با اسناد و مواضع رسمی — بدون اغراق بصری."
       />
 
-      <section className="mt-12" aria-labelledby="why-history-title">
+      <section className="mt-10 max-w-3xl" aria-labelledby="why-history-title">
         <h2
           id="why-history-title"
           className="text-[length:var(--font-size-h2)] font-semibold text-ink"
         >
-          چرا تاریخ مهم است
+          چرا این خط زمانی
         </h2>
-        <div className="mt-4 max-w-2xl space-y-4 text-ink-secondary">
+        <div className="mt-4 space-y-4 text-ink-secondary">
           <p>
-            نهادهای قابل اعتماد، روایت خود را پنهان نمی‌کنند. ثبت رویدادها به شهروندان
-            کمک می‌کند مواضع امروز را در بستر تصمیم‌های دیروز بفهمند.
+            نهادهای قابل اعتماد، روایت خود را پنهان نمی‌کنند. ثبت دوره‌ها و رویدادها به
+            شهروندان کمک می‌کند مواضع امروز را در بستر تصمیم‌های دیروز بفهمند.
           </p>
-          <p>
-            خط زمانی رسمی پارمان — پس از راه‌اندازی — رویدادها را با منبع، تاریخ، و
-            پیوند به اسناد مرتبط نمایش خواهد داد.
+          <p className="text-[length:var(--font-size-meta)] text-meta">
+            این نسخهٔ اولیه (MVP) چهار دوره ثابت را پوشش می‌دهد. مستندات، تصاویر، و
+            ارجاعات تفصیلی در فازهای بعدی افزوده می‌شوند.
           </p>
         </div>
       </section>
 
-      <section className="mt-12" aria-labelledby="eras-title">
-        <h2
-          id="eras-title"
-          className="text-[length:var(--font-size-h2)] font-semibold text-ink"
-        >
-          دوره‌ها
-        </h2>
-        <ul className="mt-6 space-y-4">
-          {eras.map((era) => (
-            <li
-              key={era.title}
-              className="rounded-md border border-mist bg-surface-paper p-5"
-            >
-              <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <h3 className="text-[length:var(--font-size-h3)] font-semibold text-ink">
-                  {era.title}
-                </h3>
-                <span className="text-[length:var(--font-size-label)] text-meta">
-                  {era.period}
-                </span>
-              </div>
-              <p className="mt-2 text-[length:var(--font-size-meta)] leading-relaxed text-ink-secondary">
-                {era.description}
-              </p>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <EraNav eras={eras} className="mt-10 hidden md:block" />
 
-      <section
-        className="mt-12 rounded-md border border-mist bg-surface-raised p-6 sm:p-8"
-        aria-labelledby="timeline-cta-title"
-      >
-        <h2
-          id="timeline-cta-title"
-          className="text-[length:var(--font-size-h2)] font-semibold text-ink"
-        >
-          خط زمانی تعاملی
-        </h2>
-        <p className="mt-3 max-w-2xl text-ink-secondary">
-          نمایش بصری رویدادها، اسناد، و بیانیه‌ها در یک خط زمانی — در حال آماده‌سازی.
-          تا آن زمان می‌توانید آرشیو بیانیه‌ها و مطالب رسانه‌ای را مرور کنید.
-        </p>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <button type="button" disabled className={editorialMutedCta}>
-            مشاهده خط زمانی — به‌زودی
-          </button>
-          <Link href="/archive" className={editorialSecondaryCta}>
-            آرشیو بیانیه‌ها
-          </Link>
-        </div>
-      </section>
+      <div className="mt-10 md:mt-12">
+        <HistoryTimeline />
+      </div>
+
+      <footer className="mt-14 flex flex-wrap gap-3 border-t border-mist pt-8">
+        <Link href="/archive" className={editorialSecondaryCta}>
+          آرشیو بیانیه‌ها
+        </Link>
+        <Link href="/charter/motto" className={editorialSecondaryCta}>
+          مرامنامه
+        </Link>
+      </footer>
     </PageContainer>
   );
 }

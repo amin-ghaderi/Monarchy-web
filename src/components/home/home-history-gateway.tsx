@@ -18,8 +18,8 @@ export function HomeHistoryGateway() {
           خط زمانی و حافظه نهادی
         </h2>
         <p className="mt-3 max-w-2xl text-ink-secondary">
-          رویدادها، نقاط عطف، و اسناد تاریخی پارمان — برای درک بهتر مسیر و تصمیم‌های
-          نهاد. آرشیو تاریخی به‌زودی در دسترس قرار می‌گیرد.
+          خط زمانی چهار دورهٔ تاریخ معاصر ایران — مشروطه تا امروز — با رویدادهای کلیدی و
+          چارچوب مستندسازی نهادی.
         </p>
         <span className="mt-5 inline-block text-sm font-medium text-link">
           ورود به بخش تاریخ
