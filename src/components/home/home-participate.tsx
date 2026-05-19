@@ -1,7 +1,9 @@
 import Link from "next/link";
 
+import { EditorialSectionMasthead } from "@/components/editorial/editorial-section-masthead";
 import { HomeSection } from "@/components/home/home-section";
-import { cn } from "@/lib/utils";
+import { editorialTextLink } from "@/lib/editorial/styles";
+import { typeSupporting } from "@/lib/editorial/typography";
 
 const participationOptions = [
   {
@@ -21,32 +23,29 @@ const participationOptions = [
   },
 ] as const;
 
-const cardClass = cn(
-  "flex h-full flex-col rounded-md border border-mist bg-surface-paper p-5",
-  "hover:border-lapis-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lapis-600",
-);
-
 export function HomeParticipate() {
   return (
-    <HomeSection id="participate" className="bg-ground">
-      <header className="max-w-2xl">
-        <h2 className="text-[length:var(--font-size-h2)] font-semibold text-ink">مشارکت</h2>
-        <p className="mt-3 text-ink-secondary">
-          راه‌های مشارکت با پارمان — فرآیندهای تفصیلی به‌زودی منتشر می‌شوند.
-        </p>
-      </header>
+    <HomeSection id="participate" tone="default">
+      <EditorialSectionMasthead
+        label="مشارکت"
+        title="راه‌های همراهی"
+        description="مشارکت آگاهانه و مسئولانه — فرآیندهای تفصیلی به‌زودی منتشر می‌شوند."
+      />
 
-      <ul className="mt-10 grid gap-4 sm:grid-cols-3">
+      <ul className="mt-10 divide-y divide-mist border-t border-mist">
         {participationOptions.map((option) => (
           <li key={option.title}>
-            <Link href={option.href} className={cardClass}>
-              <h3 className="text-[length:var(--font-size-h3)] font-semibold text-ink">
+            <Link
+              href={option.href}
+              className="group block py-8 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lapis-600 sm:py-9"
+            >
+              <h3 className="text-[length:var(--font-size-h3)] font-semibold text-ink group-hover:text-link">
                 {option.title}
               </h3>
-              <p className="mt-3 flex-1 text-[length:var(--font-size-meta)] leading-relaxed text-ink-secondary">
-                {option.description}
-              </p>
-              <span className="mt-4 text-sm font-medium text-link">بیشتر بدانید</span>
+              <p className={`${typeSupporting} mt-2 max-w-2xl`}>{option.description}</p>
+              <span className={`${editorialTextLink} mt-3 inline-block text-sm`}>
+                بیشتر بدانید
+              </span>
             </Link>
           </li>
         ))}

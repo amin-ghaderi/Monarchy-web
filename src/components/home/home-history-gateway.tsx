@@ -1,30 +1,27 @@
 import Link from "next/link";
 
+import { EditorialSectionMasthead } from "@/components/editorial/editorial-section-masthead";
 import { HomeSection } from "@/components/home/home-section";
-import { cn } from "@/lib/utils";
+import { editorialTextLink } from "@/lib/editorial/styles";
+import { typeSupporting } from "@/lib/editorial/typography";
 
 export function HomeHistoryGateway() {
   return (
-    <HomeSection id="history" className="bg-surface-raised">
-      <Link
-        href="/history"
-        className={cn(
-          "block rounded-md border border-mist bg-surface-paper p-6 sm:p-8",
-          "hover:border-lapis-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lapis-600",
-        )}
-      >
-        <p className="text-[length:var(--font-size-label)] font-medium text-meta">تاریخ</p>
-        <h2 className="mt-2 text-[length:var(--font-size-h2)] font-semibold leading-[var(--line-height-heading)] text-ink">
-          خط زمانی و حافظه نهادی
-        </h2>
-        <p className="mt-3 max-w-2xl text-ink-secondary">
-          خط زمانی چهار دورهٔ تاریخ معاصر ایران — مشروطه تا امروز — با رویدادهای کلیدی و
-          چارچوب مستندسازی نهادی.
+    <HomeSection id="history" tone="quiet">
+      <EditorialSectionMasthead
+        label="تاریخ"
+        title="خط زمانی و حافظه نهادی"
+        description="چهار دوره از مشروطه تا امروز — رویدادهای کلیدی در چارچوبی قابل استناد."
+      />
+      <div className="mt-8 border-t border-mist pt-8">
+        <p className={`${typeSupporting} max-w-2xl`}>
+          برای درک بهتر مواضع امروز، مسیر تحولات تاریخی ایران را در خط زمانی رسمی
+          پارمان مرور کنید.
         </p>
-        <span className="mt-5 inline-block text-sm font-medium text-link">
+        <Link href="/history" className={`${editorialTextLink} mt-5 inline-block text-sm`}>
           ورود به بخش تاریخ
-        </span>
-      </Link>
+        </Link>
+      </div>
     </HomeSection>
   );
 }

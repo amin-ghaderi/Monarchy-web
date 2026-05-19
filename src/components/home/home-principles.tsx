@@ -1,4 +1,6 @@
+import { EditorialSectionMasthead } from "@/components/editorial/editorial-section-masthead";
 import { HomeSection } from "@/components/home/home-section";
+import { typeSupporting } from "@/lib/editorial/typography";
 import { cn } from "@/lib/utils";
 
 const principles = [
@@ -21,34 +23,29 @@ const principles = [
 
 export function HomePrinciples() {
   return (
-    <HomeSection id="principles" className="bg-surface-raised">
-      <header className="max-w-2xl">
-        <h2 className="text-[length:var(--font-size-h2)] font-semibold leading-[var(--line-height-heading)] text-ink">
-          اصول
-        </h2>
-        <p className="mt-3 text-ink-secondary">
-          سه اصل بنیادین که مواضع و اسناد رسمی پارمان را شکل می‌دهند.
-        </p>
-      </header>
+    <HomeSection id="principles" tone="quiet">
+      <EditorialSectionMasthead
+        label="ارزش‌ها"
+        title="اصول"
+        description="سه اصل بنیادین که مواضع و اسناد رسمی پارمان را شکل می‌دهند."
+      />
 
-      <ul className="mt-10 grid gap-4 sm:grid-cols-3">
-        {principles.map((principle) => (
+      <ol className="mt-12 divide-y divide-mist border-t border-mist">
+        {principles.map((principle, index) => (
           <li
             key={principle.title}
             className={cn(
-              "rounded-md border border-mist bg-surface-paper p-5",
-              "flex flex-col",
+              "grid gap-3 py-8 sm:grid-cols-[minmax(0,11rem)_1fr] sm:gap-x-10 sm:py-10",
+              index === 0 && "pt-10",
             )}
           >
             <h3 className="text-[length:var(--font-size-h3)] font-semibold text-ink">
               {principle.title}
             </h3>
-            <p className="mt-3 flex-1 text-[length:var(--font-size-meta)] leading-relaxed text-ink-secondary">
-              {principle.description}
-            </p>
+            <p className={typeSupporting}>{principle.description}</p>
           </li>
         ))}
-      </ul>
+      </ol>
     </HomeSection>
   );
 }
