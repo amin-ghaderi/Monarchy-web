@@ -4,8 +4,11 @@ import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
+import { InstitutionalWordmark } from "@/components/identity/institutional-wordmark";
 import { NavLink } from "@/components/layout/nav-link";
 import { primaryNav } from "@/lib/navigation";
+import { editorialSecondaryCta } from "@/lib/editorial/styles";
+import { WORDMARK_ARIA_LABEL } from "@/lib/identity/lockup";
 import type { SiteSettings } from "@/types/site";
 import { cn } from "@/lib/utils";
 
@@ -17,6 +20,7 @@ export function MobileNav({ settings }: MobileNavProps) {
   const [open, setOpen] = useState(false);
   const panelId = useId();
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const participateLabel = settings.participateNavLabel ?? "مشارکت";
 
   useEffect(() => {
     if (!open) return;
@@ -37,7 +41,7 @@ export function MobileNav({ settings }: MobileNavProps) {
   }, [open]);
 
   return (
-    <div className="md:hidden">
+    <div>
       <button
         type="button"
         className={cn(
@@ -55,7 +59,7 @@ export function MobileNav({ settings }: MobileNavProps) {
 
       {open ? (
         <div
-          className="fixed inset-0 z-[var(--z-overlay)] bg-ink/20"
+          className="fixed inset-0 z-[var(--z-overlay)] bg-ink/15"
           aria-hidden
           onClick={() => setOpen(false)}
         />
@@ -65,19 +69,31 @@ export function MobileNav({ settings }: MobileNavProps) {
         id={panelId}
         aria-label="منوی اصلی"
         className={cn(
-          "fixed inset-y-0 start-0 z-[var(--z-modal)] w-[min(18rem,85vw)] border-e border-mist bg-ground shadow-modal",
-          "flex flex-col px-5 py-6",
-          open ? "visible" : "invisible pointer-events-none",
+          "fixed inset-y-0 start-0 z-[var(--z-modal)] flex w-[min(18rem,85vw)] flex-col",
+          "border-e border-mist bg-ground shadow-modal",
+          open ? "visible" : "pointer-events-none invisible",
         )}
         inert={!open}
       >
-        <div className="flex items-center justify-between border-b border-mist pb-4">
-          <span className="text-sm font-semibold text-ink">منو</span>
+        <div className="ac-institutional-rule flex items-start justify-between gap-3 px-5 pb-4 pt-6">
+          <Link
+            href="/"
+            aria-label={WORDMARK_ARIA_LABEL}
+            onClick={() => setOpen(false)}
+            className="min-w-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lapis-600"
+          >
+            <InstitutionalWordmark
+              organizationName={settings.organizationName}
+              organizationNameEn={settings.organizationNameEn}
+              variant="header"
+              hideEnOnNarrow={false}
+            />
+          </Link>
           <button
             ref={closeButtonRef}
             type="button"
             className={cn(
-              "inline-flex h-9 w-9 items-center justify-center rounded-sm text-ink-secondary",
+              "inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-sm text-ink-secondary",
               "hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lapis-600",
             )}
             aria-label="بستن منو"
@@ -87,29 +103,25 @@ export function MobileNav({ settings }: MobileNavProps) {
           </button>
         </div>
 
-        <ul className="mt-6 flex flex-col gap-1">
+        <ul className="flex flex-col gap-0.5 px-4">
           {primaryNav.map((item) => (
             <li key={item.href}>
               <NavLink
                 item={item}
-                className="block px-1 py-2 text-base"
+                className="block px-1 py-2.5 text-[length:var(--font-size-body)]"
                 onNavigate={() => setOpen(false)}
               />
             </li>
           ))}
         </ul>
 
-        <div className="mt-auto border-t border-mist pt-6">
+        <div className="mt-auto border-t border-mist px-5 py-5">
           <Link
             href="/participate"
             onClick={() => setOpen(false)}
-            className={cn(
-              "inline-flex w-full items-center justify-center rounded-md border border-lapis-600 px-4 py-2.5",
-              "text-sm font-medium text-lapis-700",
-              "hover:bg-lapis-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lapis-600",
-            )}
+            className={cn(editorialSecondaryCta, "text-sm")}
           >
-            {settings.participateNavLabel ?? "مشارکت"}
+            {participateLabel}
           </Link>
         </div>
       </nav>

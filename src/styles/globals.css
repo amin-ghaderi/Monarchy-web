@@ -3,6 +3,7 @@
 @import "./motion.css";
 @import "./home-atmosphere.css";
 @import "./history-atmosphere.css";
+@import "./identity.css";
 
 @theme inline {
   /* Colors */
