@@ -13,8 +13,18 @@ export default async function HomePage() {
   const statements = await fetchStatementsList();
   const latestStatement = statements[0] ?? null;
 
+  // TEMP VERCEL TEST
   return (
-    <div>
+    <div
+      className="min-h-screen bg-black text-white [&_a]:!text-white [&_article]:!bg-black [&_blockquote]:!text-white [&_button]:!text-white [&_h1]:!text-white [&_h2]:!text-white [&_h3]:!text-white [&_h4]:!text-white [&_li]:!text-white [&_p]:!text-white [&_section]:!bg-black [&_span]:!text-white [&_time]:!text-white"
+      style={{ backgroundColor: "#000000", color: "#ffffff" }}
+    >
+      <div
+        className="bg-red-600 px-6 py-8 text-center text-3xl font-bold text-white"
+        role="status"
+      >
+        VERCEL TEST DEPLOY SUCCESS
+      </div>
       <HomeCinematicChrome />
       <HomePrologue />
       <HomePrinciples />
