@@ -18,7 +18,7 @@ export function HomeLatestStatement({ statement }: HomeLatestStatementProps) {
     <HomeSection
       id="latest-statement"
       tone="default"
-      className="py-16 sm:py-20 lg:py-24"
+      className="ac-proof-return py-16 sm:py-20 lg:py-24"
     >
       <HomeReveal>
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
@@ -31,9 +31,8 @@ export function HomeLatestStatement({ statement }: HomeLatestStatementProps) {
             آرشیو بیانیه‌ها
           </Link>
         </div>
+        <FeaturedPublication statement={statement} />
       </HomeReveal>
-
-      <FeaturedPublication statement={statement} />
     </HomeSection>
   );
 }

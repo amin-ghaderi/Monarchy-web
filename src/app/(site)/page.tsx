@@ -1,3 +1,4 @@
+import { HomeChapterBreath } from "@/components/home/home-chapter-breath";
 import { HomeChronicleInterlude } from "@/components/home/home-chronicle-interlude";
 import { HomeCinematicChrome } from "@/components/home/home-cinematic-chrome";
 import { HomeHistoryGateway } from "@/components/home/home-history-gateway";
@@ -17,6 +18,7 @@ export default async function HomePage() {
       <HomeCinematicChrome />
       <HomePrologue />
       <HomePrinciples />
+      <HomeChapterBreath />
       <HomeChronicleInterlude />
       {latestStatement ? <HomeLatestStatement statement={latestStatement} /> : null}
       <HomeHistoryGateway />

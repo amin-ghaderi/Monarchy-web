@@ -4,8 +4,6 @@ import { EditorialSectionMasthead } from "@/components/editorial/editorial-secti
 import { HomeReveal } from "@/components/home/home-reveal";
 import { HomeSection } from "@/components/home/home-section";
 import { typeSupporting } from "@/lib/editorial/typography";
-import { staggerDelay } from "@/lib/motion/motion-props";
-import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { cn } from "@/lib/utils";
 
 const principles = [
@@ -27,10 +25,12 @@ const principles = [
 ] as const;
 
 export function HomePrinciples() {
-  const reduced = useReducedMotion();
-
   return (
-    <HomeSection id="principles" tone="quiet">
+    <HomeSection
+      id="principles"
+      tone="quiet"
+      className="ac-handoff-to-memory pb-14 sm:pb-16 lg:pb-20"
+    >
       <HomeReveal>
         <EditorialSectionMasthead
           label="ارزش‌ها"
@@ -44,19 +44,14 @@ export function HomePrinciples() {
           <li
             key={principle.title}
             className={cn(
-              "py-8 sm:py-10",
+              "grid gap-3 py-8 sm:grid-cols-[minmax(0,11rem)_1fr] sm:gap-x-10 sm:py-10",
               index === 0 && "pt-10",
             )}
           >
-            <HomeReveal
-              delay={staggerDelay(index, reduced)}
-              className="grid gap-3 sm:grid-cols-[minmax(0,11rem)_1fr] sm:gap-x-10"
-            >
-              <h3 className="text-[length:var(--font-size-h3)] font-semibold text-ink">
-                {principle.title}
-              </h3>
-              <p className={typeSupporting}>{principle.description}</p>
-            </HomeReveal>
+            <h3 className="text-[length:var(--font-size-h3)] font-semibold text-ink">
+              {principle.title}
+            </h3>
+            <p className={typeSupporting}>{principle.description}</p>
           </li>
         ))}
       </ol>

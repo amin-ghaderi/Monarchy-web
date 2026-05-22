@@ -1,0 +1,102 @@
+/**
+ * Homepage signature choreography — Descent & Return (Phase 15C-1).
+ * CSS-first, no decorative animation.
+ */
+
+/* Principles → memory: subtle descent gradient at section foot */
+.ac-handoff-to-memory {
+  position: relative;
+}
+
+.ac-handoff-to-memory::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  height: 5rem;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    color-mix(in srgb, var(--color-obsidian-900) 5%, transparent) 100%
+  );
+}
+
+/* Ivory breath before chronicle — wordless pause */
+.ac-chapter-breath {
+  position: relative;
+  min-height: max(2.75rem, 4vh);
+  max-height: 5vh;
+  background: linear-gradient(
+    180deg,
+    var(--color-surface-raised) 0%,
+    color-mix(in srgb, var(--color-obsidian-900) 3%, var(--color-surface-raised)) 100%
+  );
+  border-block: 1px solid var(--color-mist-200);
+}
+
+.ac-chapter-breath-spine {
+  position: absolute;
+  inset-block: 20%;
+  inset-inline-end: 12%;
+  width: 1px;
+  background: color-mix(in srgb, var(--color-lapis-600) 8%, transparent);
+  opacity: 0.35;
+}
+
+@media (min-width: 768px) {
+  .ac-chapter-breath-spine {
+    inset-inline-end: 18%;
+  }
+}
+
+/* Chronicle approach — slightly deeper stillness */
+.ac-chronicle-signature {
+  min-height: max(35vh, 38vh);
+}
+
+/* Continuum whisper behind quote — abstract, not cartographic */
+.ac-chronicle-continuum-whisper {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200' fill='none'%3E%3Cpath d='M0 100h400M80 40v120M160 60v80M240 50v100M320 70v60' stroke='%23ede9e1' stroke-width='0.4' opacity='0.9'/%3E%3Cpath d='M20 120 Q120 90 200 110 T380 95' stroke='%23c9c4bb' stroke-width='0.35'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 50% 55%;
+  background-size: min(92vw, 720px) auto;
+}
+
+.ac-chronicle-quote-signature {
+  letter-spacing: 0.02em;
+}
+
+.ac-chronicle-quote-signature cite {
+  font-style: normal;
+}
+
+/* Chronicle → proof: return to light */
+.ac-proof-return {
+  position: relative;
+}
+
+.ac-proof-return::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  inset-block-start: 0;
+  height: 4.5rem;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-obsidian-900) 6%, transparent) 0%,
+    transparent 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ac-handoff-to-memory::after,
+  .ac-proof-return::before {
+    display: none;
+  }
+}

@@ -26,20 +26,16 @@ export function HomePrologue() {
     >
       <HomeReveal>
         <p className={typeSectionLabel}>پارمان پادشاهی ایرانیان</p>
-      </HomeReveal>
-      <HomeReveal delay={0.05}>
         <h1 className={`${typeDisplay} mt-6 max-w-4xl sm:mt-8`}>
           نهادی برای ایران آزاد، قانون‌مدار، و مسئول
         </h1>
       </HomeReveal>
-      <HomeReveal delay={0.1}>
+      <HomeReveal delay={0.08}>
         <p className={cn(typeSectionDek, "ac-dek-institutional mt-8 max-w-2xl sm:mt-10")}>
           پارمان (حزب) پادشاهی ایرانیان یک نهاد سیاسی و ملی است که بر پایه ایرانشهری،
           حاکمیت قانون، و پادشاهی پارلمانی بنا شده است — با زبان رسمی، شفاف، و قابل
           استناد.
         </p>
-      </HomeReveal>
-      <HomeReveal delay={0.14}>
         <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-3 sm:mt-14">
           <Link href="/archive" className={editorialPrimaryCta}>
             مطالعه بیانیه‌ها
