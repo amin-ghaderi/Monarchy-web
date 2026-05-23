@@ -28,11 +28,11 @@ export function SiteHeader({ settings }: SiteHeaderProps) {
   return (
     <header
       className={cn(
-        "ac-institutional-rule sticky top-0 z-[var(--z-sticky)] border-b border-mist bg-ground",
+        "ac-institutional-rule ac-surface-a sticky top-0 z-[var(--z-sticky)] border-b border-mist",
         scrolled && "shadow-soft",
       )}
     >
-      <div className="mx-auto flex h-[3.75rem] max-w-6xl items-center gap-5 px-5 sm:h-16 sm:gap-6 sm:px-6">
+      <div className="mx-auto flex h-16 max-w-6xl items-center gap-5 px-5 sm:h-[4.25rem] sm:gap-7 sm:px-6">
         <Link
           href="/"
           aria-label={WORDMARK_ARIA_LABEL}

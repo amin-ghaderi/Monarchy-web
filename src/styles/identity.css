@@ -51,6 +51,12 @@
   font-size: 1rem;
 }
 
+@media (min-width: 1024px) {
+  .ac-wordmark-primary-legal {
+    font-size: 1.0625rem;
+  }
+}
+
 .ac-wordmark--footer .ac-wordmark-primary,
 .ac-wordmark--footer .ac-wordmark-primary-legal {
   font-size: 1rem;

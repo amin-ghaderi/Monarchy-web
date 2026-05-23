@@ -21,8 +21,8 @@ export function SiteFooter({ settings }: SiteFooterProps) {
   const socialLinks = settings.socialLinks ?? [];
 
   return (
-    <footer className="mt-auto border-t border-mist bg-surface-raised">
-      <div className="ac-institutional-rule mx-auto max-w-6xl px-5 sm:px-6">
+    <footer className="ac-surface-c relative mt-auto border-t border-mist">
+      <div className="ac-institutional-rule relative z-[1] mx-auto max-w-6xl px-5 sm:px-6">
         <div className="py-12 lg:py-14">
           <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
             <div>

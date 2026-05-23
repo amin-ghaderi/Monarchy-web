@@ -1,0 +1,140 @@
+/**
+ * Phase 16 — Premium surface system (A ivory / B obsidian / C stone).
+ * CSS-only depth; no flat white bands.
+ */
+
+.ac-surface-root {
+  background-color: var(--color-surface-stone-base);
+  min-height: 100%;
+}
+
+/* Surface A — Ivory editorial */
+.ac-surface-a {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--color-ground);
+  background-image:
+    radial-gradient(
+      ellipse 120% 80% at 50% -20%,
+      color-mix(in srgb, var(--color-ivory-100) 55%, transparent),
+      transparent 55%
+    ),
+    linear-gradient(
+      180deg,
+      var(--color-ground) 0%,
+      color-mix(in srgb, var(--color-ivory-100) 35%, var(--color-ground)) 100%
+    );
+}
+
+.ac-surface-a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: var(--authority-grain-opacity);
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+.ac-surface-a-paper {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--color-surface-paper);
+  background-image: linear-gradient(
+    165deg,
+    var(--color-surface-paper) 0%,
+    color-mix(in srgb, var(--color-ivory-100) 30%, var(--color-surface-paper)) 100%
+  );
+}
+
+.ac-surface-a-paper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: calc(var(--authority-grain-opacity) * 0.85);
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+/* Surface B — Chronicle obsidian (section bands, not site-wide dark mode) */
+.ac-surface-b {
+  position: relative;
+  color: var(--color-text-on-chronicle);
+  background-color: var(--color-surface-chronicle);
+  background-image:
+    radial-gradient(
+      ellipse 90% 60% at 50% 0%,
+      color-mix(in srgb, var(--color-lapis-600) 8%, transparent),
+      transparent 70%
+    ),
+    linear-gradient(
+      180deg,
+      var(--color-surface-chronicle) 0%,
+      var(--color-surface-chronicle-elevated) 100%
+    );
+}
+
+/* Surface C — Institutional stone */
+.ac-surface-c {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--color-surface-stone-base);
+  background-image:
+    radial-gradient(
+      ellipse 100% 50% at 0% 0%,
+      color-mix(in srgb, var(--color-ivory-100) 40%, transparent),
+      transparent 50%
+    ),
+    linear-gradient(
+      180deg,
+      var(--color-surface-stone-base) 0%,
+      color-mix(in srgb, var(--color-surface-sunken) 45%, var(--color-surface-stone-base)) 100%
+    );
+}
+
+.ac-surface-c::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: calc(var(--authority-grain-opacity) * 0.7);
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 220px 220px;
+}
+
+/* Hero editorial shell — layered with atmosphere */
+.ac-hero-editorial {
+  position: relative;
+  isolation: isolate;
+}
+
+.ac-hero-threshold {
+  display: none;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: var(--font-size-label);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-meta);
+  border-inline-end: 1px solid color-mix(in srgb, var(--color-lapis-600) 12%, var(--color-mist-200));
+  padding-inline-end: var(--space-md);
+  min-height: 12rem;
+  align-self: stretch;
+  justify-self: end;
+}
+
+@media (min-width: 1024px) {
+  .ac-hero-threshold {
+    display: flex;
+    align-items: flex-end;
+    padding-block-end: var(--space-sm);
+  }
+}

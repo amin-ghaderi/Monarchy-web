@@ -5,9 +5,19 @@ export const typeDisplay = cn(
   "text-[length:var(--font-size-display)] font-semibold leading-[var(--line-height-display)] tracking-tight text-ink",
 );
 
+/** Level 1+ — flagship hero display */
+export const typeDisplayHero = cn(
+  "text-[length:var(--font-size-display-hero)] font-semibold leading-[var(--line-height-display)] tracking-tight text-ink",
+);
+
 /** Level 2 — section titles */
 export const typeSectionTitle = cn(
   "text-[length:var(--font-size-h2)] font-semibold leading-[var(--line-height-heading)] text-ink",
+);
+
+/** History era titles — stronger institutional presence */
+export const typeEraTitle = cn(
+  "text-[length:var(--font-size-h2)] font-semibold leading-[var(--line-height-heading)] tracking-tight text-ink sm:text-[length:var(--font-size-h1)]",
 );
 
 /** Level 3 — labels, meta, supporting lines */

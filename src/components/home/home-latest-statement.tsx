@@ -17,7 +17,7 @@ export function HomeLatestStatement({ statement }: HomeLatestStatementProps) {
   return (
     <HomeSection
       id="latest-statement"
-      tone="default"
+      surface="paper"
       className="ac-proof-return py-16 sm:py-20 lg:py-24"
     >
       <HomeReveal>

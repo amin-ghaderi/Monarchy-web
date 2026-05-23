@@ -1,0 +1,107 @@
+/**
+ * Phase 16 — Iranian geometric SVG language (abstract, low-opacity, structural).
+ */
+
+.ac-geometry-field {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ac-geometry-field svg {
+  position: absolute;
+  height: auto;
+  fill: none;
+  stroke: var(--color-lapis-600);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ac-geometry-field--hero svg {
+  opacity: var(--geometry-opacity-hero);
+}
+
+.ac-geometry-field--page svg {
+  opacity: var(--geometry-opacity-page);
+}
+
+.ac-geometry-field--rail svg {
+  opacity: var(--geometry-opacity-rail);
+  inset-inline-end: 0;
+  inset-block: 10% 10%;
+  width: 100%;
+  max-height: 28rem;
+}
+
+.ac-geometry-field--minimal svg {
+  opacity: var(--geometry-opacity-minimal);
+}
+
+.ac-geometry-lattice {
+  inset-inline-end: -4%;
+  inset-block-start: 8%;
+  width: min(42vw, 22rem);
+}
+
+.ac-geometry-arch {
+  inset-inline-start: -6%;
+  inset-block-end: 0;
+  width: min(50vw, 26rem);
+  opacity: 0.85;
+}
+
+.ac-geometry-margin {
+  inset-inline-end: 2%;
+  inset-block-start: 0;
+  width: 5.5rem;
+  height: 100%;
+}
+
+/* History era plates */
+.ac-era-plate {
+  position: relative;
+  margin-inline-start: calc(-1 * var(--space-sm));
+  margin-inline-end: calc(-1 * var(--space-sm));
+  padding: var(--space-lg) var(--space-md);
+  border-radius: var(--radius-md);
+  background: color-mix(
+    in srgb,
+    var(--era-plate-tint, var(--era-tint-2)) 100%,
+    var(--color-paper) 94%
+  );
+}
+
+.ac-era-plate::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  border: 1px solid color-mix(in srgb, var(--color-mist-200) 80%, transparent);
+}
+
+.ac-era-plate.ac-era-wash-1 {
+  --era-plate-tint: var(--era-tint-1);
+}
+
+.ac-era-plate.ac-era-wash-2 {
+  --era-plate-tint: var(--era-tint-2);
+}
+
+.ac-era-plate.ac-era-wash-4 {
+  --era-plate-tint: var(--era-tint-4);
+}
+
+.ac-era-plate.ac-era-wash-heavy {
+  --era-plate-tint: var(--era-tint-2);
+}
+
+@media (min-width: 768px) {
+  .ac-era-plate {
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding: var(--space-xl) var(--space-lg);
+  }
+}

@@ -5,6 +5,8 @@
 @import "./home-signature.css";
 @import "./history-atmosphere.css";
 @import "./identity.css";
+@import "./surfaces.css";
+@import "./geometry.css";
 
 @theme inline {
   /* Colors */
@@ -72,7 +74,7 @@ html {
 }
 
 body {
-  background-color: var(--color-ground);
+  background-color: var(--color-surface-stone-base);
   color: var(--color-text-primary);
   font-family: var(--font-sans);
   font-size: var(--font-size-body);

@@ -1,5 +1,6 @@
 "use client";
 
+import { GeometryField } from "@/components/visual/geometry-field";
 import { HomeReveal } from "@/components/home/home-reveal";
 import { cn } from "@/lib/utils";
 
@@ -16,10 +17,11 @@ export function HomeChronicleInterlude() {
     <section
       aria-label="تداوم تاریخی"
       className={cn(
-        "ac-chronicle-section ac-chronicle-signature relative flex max-h-[50vh] items-center",
+        "ac-surface-b ac-chronicle-section ac-chronicle-signature relative flex max-h-[50vh] items-center",
         "border-y border-surface-chronicle-elevated px-5 py-16 sm:px-6 sm:py-20",
       )}
     >
+      <GeometryField variant="minimal" />
       <div className="ac-chronicle-backdrop" aria-hidden>
         <div className="ac-chronicle-depth" />
         <div className="ac-chronicle-continuum-whisper" />

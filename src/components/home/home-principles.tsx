@@ -28,7 +28,7 @@ export function HomePrinciples() {
   return (
     <HomeSection
       id="principles"
-      tone="quiet"
+      surface="stone"
       className="ac-handoff-to-memory pb-14 sm:pb-16 lg:pb-20"
     >
       <HomeReveal>

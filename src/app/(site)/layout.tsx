@@ -10,7 +10,7 @@ export default async function SiteLayout({
   const settings = await fetchSiteSettings();
 
   return (
-    <div className="flex min-h-full flex-col">
+    <div className="ac-surface-root flex min-h-full flex-col">
       <SiteHeader settings={settings} />
       <main className="flex-1">{children}</main>
       <SiteFooter settings={settings} />

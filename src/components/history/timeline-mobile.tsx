@@ -3,6 +3,8 @@
 import type { HistoryEra } from "@/types/history";
 import { EraContent } from "@/components/history/era-content";
 import { HistoryEraAtmosphere } from "@/components/history/history-era-atmosphere";
+import { getEraAtmosphereClass } from "@/lib/history/era-atmosphere";
+import { typeEraTitle } from "@/lib/editorial/typography";
 import { cn } from "@/lib/utils";
 
 type TimelineMobileProps = {
@@ -17,7 +19,10 @@ export function TimelineMobile({ eras }: TimelineMobileProps) {
           key={era.id}
           id={`${era.slug}-mobile`}
           open={index === 0}
-          className="ac-history-mobile-era group relative scroll-mt-24 overflow-hidden border-b border-mist"
+          className={cn(
+            "ac-history-mobile-era ac-era-plate group relative scroll-mt-24 overflow-hidden border-b border-mist",
+            getEraAtmosphereClass(era.slug, index),
+          )}
         >
           <HistoryEraAtmosphere slug={era.slug} index={index} />
           <summary
@@ -28,8 +33,10 @@ export function TimelineMobile({ eras }: TimelineMobileProps) {
             )}
           >
             <div>
-              <p className="text-[length:var(--font-size-label)] text-meta">{era.timeframe}</p>
-              <h2 className="mt-1 text-[length:var(--font-size-h3)] font-semibold text-ink">
+              <p className="text-[length:var(--font-size-label)] font-medium uppercase tracking-[0.1em] text-meta">
+                {era.timeframe}
+              </p>
+              <h2 className={cn(typeEraTitle, "mt-2 text-[length:var(--font-size-h3)]")}>
                 {era.title}
               </h2>
             </div>

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 
 import { EditorialPageHeader } from "@/components/editorial/editorial-page-header";
+import { InstitutionalEditorialShell } from "@/components/layout/institutional-editorial-shell";
 import { PageContainer } from "@/components/layout/page-container";
 import { createContentMetadata } from "@/lib/seo/metadata";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = createContentMetadata({
   title: "درباره حزب",
@@ -49,30 +51,43 @@ const sections = [
 
 export default function PartyAboutPage() {
   return (
-    <PageContainer variant="institutional">
-      <EditorialPageHeader
-        label="حزب"
-        title="درباره پارمان پادشاهی ایرانیان"
-        description="نهاد سیاسی و ملی بر پایه ایرانشهری، قانون‌مداری، و پادشاهی پارلمانی."
-      />
+    <InstitutionalEditorialShell>
+      <PageContainer variant="institutional">
+        <EditorialPageHeader
+          label="حزب"
+          title="درباره پارمان پادشاهی ایرانیان"
+          description="نهاد سیاسی و ملی بر پایه ایرانشهری، قانون‌مداری، و پادشاهی پارلمانی."
+          className="border-b-2 border-mist pb-10"
+        />
 
-      <div className="mt-12 space-y-12">
-        {sections.map((section) => (
-          <section key={section.id} id={section.id} aria-labelledby={`${section.id}-title`}>
-            <h2
-              id={`${section.id}-title`}
-              className="text-[length:var(--font-size-h2)] font-semibold leading-[var(--line-height-heading)] text-ink"
+        <div className="mt-12 space-y-14">
+          {sections.map((section, index) => (
+            <section
+              key={section.id}
+              id={section.id}
+              aria-labelledby={`${section.id}-title`}
+              className={cn(
+                "relative scroll-mt-24 border-t border-mist pt-10",
+                index === 0 && "border-t-0 pt-0",
+              )}
             >
-              {section.title}
-            </h2>
-            <div className="mt-4 space-y-4 text-ink-secondary">
-              {section.paragraphs.map((paragraph) => (
-                <p key={paragraph.slice(0, 24)}>{paragraph}</p>
-              ))}
-            </div>
-          </section>
-        ))}
-      </div>
-    </PageContainer>
+              <h2
+                id={`${section.id}-title`}
+                className="text-[length:var(--font-size-h2)] font-semibold leading-[var(--line-height-heading)] text-ink sm:text-[length:var(--font-size-h1)]"
+              >
+                {section.title}
+              </h2>
+              <div className="mt-5 max-w-2xl space-y-4 border-s-2 border-transparent ps-0 text-ink-secondary sm:border-lapis-600/15 sm:ps-6">
+                {section.paragraphs.map((paragraph) => (
+                  <p key={paragraph.slice(0, 24)} className="leading-relaxed">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      </PageContainer>
+    </InstitutionalEditorialShell>
   );
 }

@@ -25,7 +25,7 @@ const participationOptions = [
 
 export function HomeParticipate() {
   return (
-    <HomeSection id="participate" tone="default">
+    <HomeSection id="participate" surface="ivory">
       <EditorialSectionMasthead
         label="مشارکت"
         title="راه‌های همراهی"
