@@ -1,8 +1,8 @@
-import Link from "next/link";
+"use client";
 
 import { EditorialSectionMasthead } from "@/components/editorial/editorial-section-masthead";
+import { HomeMagneticCta } from "@/components/home/home-magnetic-cta";
 import { HomeSection } from "@/components/home/home-section";
-import { editorialTextLink } from "@/lib/editorial/styles";
 import { typeSupporting } from "@/lib/editorial/typography";
 
 export function HomeHistoryGateway() {
@@ -18,9 +18,9 @@ export function HomeHistoryGateway() {
           برای درک بهتر مواضع امروز، مسیر تحولات تاریخی ایران را در خط زمانی رسمی
           پارمان مرور کنید.
         </p>
-        <Link href="/history" className={`${editorialTextLink} mt-5 inline-block text-sm`}>
+        <HomeMagneticCta href="/history" variant="text" className="mt-5 inline-block text-sm">
           ورود به بخش تاریخ
-        </Link>
+        </HomeMagneticCta>
       </div>
     </HomeSection>
   );

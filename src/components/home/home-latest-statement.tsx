@@ -1,12 +1,10 @@
 "use client";
 
-import Link from "next/link";
-
 import { EditorialSectionMasthead } from "@/components/editorial/editorial-section-masthead";
 import { FeaturedPublication } from "@/components/home/featured-publication";
+import { HomeMagneticCta } from "@/components/home/home-magnetic-cta";
 import { HomeReveal } from "@/components/home/home-reveal";
 import { HomeSection } from "@/components/home/home-section";
-import { editorialTextLink } from "@/lib/editorial/styles";
 import type { StatementListItem } from "@/types/content";
 
 type HomeLatestStatementProps = {
@@ -24,9 +22,9 @@ export function HomeLatestStatement({ statement }: HomeLatestStatementProps) {
             description="انتشارات قانونی و قابل استناد پارمان."
             className="mb-0"
           />
-          <Link href="/archive" className={`${editorialTextLink} shrink-0 text-sm`}>
+          <HomeMagneticCta href="/archive" variant="text" className="shrink-0 text-sm">
             آرشیو بیانیه‌ها
-          </Link>
+          </HomeMagneticCta>
         </div>
         <FeaturedPublication statement={statement} />
       </HomeReveal>

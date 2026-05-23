@@ -1,0 +1,171 @@
+/**
+ * Phase 16A — Hero depth + magnetic CTAs (homepage only).
+ */
+
+.ac-hero-depth {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ac-hero-depth__layer {
+  position: absolute;
+  inset: -4%;
+  will-change: transform;
+}
+
+.ac-hero-depth__layer--atmosphere {
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 85% 65% at 72% 28%,
+      color-mix(in srgb, var(--color-lapis-100) 75%, transparent),
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 60% 45% at 18% 82%,
+      color-mix(in srgb, var(--color-ivory-100) 90%, transparent),
+      transparent 55%
+    ),
+    linear-gradient(
+      155deg,
+      var(--color-ivory-50) 0%,
+      color-mix(in srgb, var(--color-lapis-100) 25%, var(--color-ivory-50)) 55%,
+      var(--color-ivory-100) 100%
+    );
+}
+
+.ac-hero-depth__layer--atmosphere::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 240px 240px;
+}
+
+.ac-hero-depth__layer--contours {
+  opacity: 0.42;
+}
+
+.ac-hero-depth__layer--contours svg {
+  position: absolute;
+  inset-block-start: -6%;
+  inset-inline-end: -8%;
+  width: 115%;
+  height: 115%;
+}
+
+.ac-hero-depth__layer--geometry {
+  opacity: 0.55;
+}
+
+.ac-hero-depth__layer--geometry svg {
+  position: absolute;
+  inset-block-end: -4%;
+  inset-inline-start: -4%;
+  width: 105%;
+  height: 105%;
+}
+
+.ac-hero-content-frame {
+  position: relative;
+  padding: var(--space-lg) var(--space-md);
+  border-inline-start: 3px solid var(--color-lapis-600);
+  background: linear-gradient(
+    270deg,
+    color-mix(in srgb, var(--color-paper) 92%, transparent) 0%,
+    color-mix(in srgb, var(--color-paper) 70%, transparent) 65%,
+    transparent 100%
+  );
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-lapis-600) 8%, transparent);
+}
+
+@media (min-width: 1024px) {
+  .ac-hero-content-frame {
+    padding: var(--space-xl) var(--space-xl) var(--space-xl) var(--space-2xl);
+  }
+}
+
+.ac-hero-composition-zone {
+  position: relative;
+  min-height: 18rem;
+  border: 1px solid color-mix(in srgb, var(--color-lapis-600) 22%, var(--color-mist-200));
+  background: color-mix(in srgb, var(--color-lapis-100) 35%, var(--color-paper));
+  box-shadow: var(--shadow-architectural-lg);
+}
+
+@media (min-width: 1024px) {
+  .ac-hero-composition-zone {
+    min-height: 34rem;
+  }
+}
+
+.ac-magnetic-cta-wrap {
+  display: inline-block;
+  will-change: transform;
+}
+
+.ac-magnetic-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.ac-magnetic-cta:hover,
+.ac-magnetic-cta:focus-visible {
+  transform: translateY(-2px) scale(1.01);
+}
+
+.ac-magnetic-cta--primary:hover,
+.ac-magnetic-cta--primary:focus-visible {
+  box-shadow: 0 10px 32px color-mix(in srgb, var(--color-lapis-600) 35%, transparent);
+}
+
+.ac-magnetic-cta--secondary:hover,
+.ac-magnetic-cta--secondary:focus-visible {
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--color-lapis-600) 12%, transparent);
+}
+
+.ac-magnetic-cta--text:hover,
+.ac-magnetic-cta--text:focus-visible {
+  transform: translateY(-1px) scale(1.005);
+}
+
+.ac-magnetic-cta--card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  text-align: inherit;
+}
+
+.ac-magnetic-cta--card:hover,
+.ac-magnetic-cta--card:focus-visible {
+  transform: translateY(-3px) scale(1.008);
+  box-shadow: var(--shadow-architectural-lg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ac-hero-depth__layer {
+    transform: none !important;
+    will-change: auto;
+  }
+
+  .ac-magnetic-cta-wrap {
+    transform: none !important;
+  }
+
+  .ac-magnetic-cta:hover,
+  .ac-magnetic-cta:focus-visible {
+    transform: none;
+  }
+}

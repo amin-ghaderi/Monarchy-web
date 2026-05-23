@@ -1,8 +1,8 @@
-import Link from "next/link";
+"use client";
 
+import { HomeMagneticCta } from "@/components/home/home-magnetic-cta";
 import { statementTypeLabels } from "@/lib/content/statement-labels";
 import { formatPublicationDates } from "@/lib/dates/format";
-import { editorialTextLink } from "@/lib/editorial/styles";
 import { typeSupporting } from "@/lib/editorial/typography";
 import type { StatementListItem } from "@/types/content";
 import { cn } from "@/lib/utils";
@@ -32,12 +32,9 @@ export function FeaturedPublication({ statement }: FeaturedPublicationProps) {
       </header>
 
       <h3 className="mt-8 text-[length:var(--font-size-h1)] font-semibold leading-[var(--line-height-heading)] text-ink sm:mt-10">
-        <Link
-          href={href}
-          className="hover:text-link focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lapis-600"
-        >
+        <HomeMagneticCta href={href} variant="text" className="text-[length:var(--font-size-h1)] font-semibold no-underline">
           {statement.titleFa}
-        </Link>
+        </HomeMagneticCta>
       </h3>
 
       {summary ? (
@@ -50,9 +47,9 @@ export function FeaturedPublication({ statement }: FeaturedPublicationProps) {
         <p className="text-[length:var(--font-size-label)] font-medium uppercase tracking-wider text-meta">
           انتشار عمومی · قابل استناد
         </p>
-        <Link href={href} className={cn(editorialTextLink, "text-base font-semibold")}>
+        <HomeMagneticCta href={href} variant="text" className="text-base font-semibold">
           مطالعه متن کامل سند ←
-        </Link>
+        </HomeMagneticCta>
       </footer>
     </article>
   );

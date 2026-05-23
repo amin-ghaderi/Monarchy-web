@@ -1,6 +1,7 @@
-import Link from "next/link";
+"use client";
 
 import { EditorialSectionMasthead } from "@/components/editorial/editorial-section-masthead";
+import { HomeMagneticCta } from "@/components/home/home-magnetic-cta";
 import { HomeSection } from "@/components/home/home-section";
 import { typeSupporting } from "@/lib/editorial/typography";
 
@@ -33,10 +34,11 @@ export function HomeParticipate() {
 
       <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {participationOptions.map((option) => (
-          <Link
+          <HomeMagneticCta
             key={option.title}
             href={option.href}
-            className="ac-participate-card group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lapis-600"
+            variant="card"
+            className="ac-participate-card group"
           >
             <span className="ac-participate-card__mark" aria-hidden />
             <h3 className="text-[length:var(--font-size-h3)] font-semibold text-ink group-hover:text-lapis-700">
@@ -44,7 +46,7 @@ export function HomeParticipate() {
             </h3>
             <p className={`${typeSupporting} mt-3 flex-1`}>{option.description}</p>
             <span className="mt-6 text-sm font-semibold text-lapis-700">ادامه ←</span>
-          </Link>
+          </HomeMagneticCta>
         ))}
       </div>
     </HomeSection>
