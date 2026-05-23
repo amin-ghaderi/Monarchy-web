@@ -15,16 +15,13 @@ type HomeLatestStatementProps = {
 
 export function HomeLatestStatement({ statement }: HomeLatestStatementProps) {
   return (
-    <HomeSection
-      id="latest-statement"
-      surface="paper"
-      className="ac-proof-return py-16 sm:py-20 lg:py-24"
-    >
+    <HomeSection id="latest-statement" chapter="documentary" wide>
       <HomeReveal>
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <EditorialSectionMasthead
-            label="انتشارات رسمی"
-            title="آخرین بیانیه"
+            label="آرشیو رسمی"
+            title="آخرین سند منتشرشده"
+            description="انتشارات قانونی و قابل استناد پارمان."
             className="mb-0"
           />
           <Link href="/archive" className={`${editorialTextLink} shrink-0 text-sm`}>

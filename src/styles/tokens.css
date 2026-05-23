@@ -73,13 +73,16 @@
   --atmosphere-institutional-border-opacity: 0.04;
   --chronicle-grain-opacity: 0.03;
 
-  /* Phase 16 — visual authority */
-  --authority-grain-opacity: 0.04;
-  --geometry-opacity-hero: 0.14;
-  --geometry-opacity-page: 0.1;
-  --geometry-opacity-rail: 0.12;
-  --geometry-opacity-minimal: 0.08;
-  --history-wash-opacity: 0.85;
+  /* Phase 16 Reboot — visible authority */
+  --color-brass-accent: var(--color-gold-500);
+  --authority-grain-opacity: 0.07;
+  --geometry-opacity-hero: 0.48;
+  --geometry-opacity-page: 0.32;
+  --geometry-opacity-rail: 0.38;
+  --geometry-opacity-minimal: 0.28;
+  --history-wash-opacity: 0.92;
+  --shadow-architectural: 0 12px 48px rgb(20 19 16 / 10%), 0 2px 8px rgb(20 19 16 / 6%);
+  --shadow-architectural-lg: 0 24px 64px rgb(20 19 16 / 14%), 0 4px 16px rgb(20 19 16 / 8%);
 
   /* ——— Semantic text ——— */
   --color-text-primary: var(--color-ink-900);
@@ -123,7 +126,7 @@
 
   /* ——— Typography scale (px) ——— */
   --font-size-display: 3.25rem;
-  --font-size-display-hero: 3.75rem;
+  --font-size-display-hero: 4.25rem;
   --font-size-h1: 2.5rem;
   --font-size-h2: 1.75rem;
   --font-size-h3: 1.375rem;
@@ -155,7 +158,7 @@
 @media (max-width: 640px) {
   :root {
     --font-size-display: 2.25rem;
-    --font-size-display-hero: 2.5rem;
+    --font-size-display-hero: 2.75rem;
     --font-size-h1: 1.75rem;
     --font-size-h2: 1.375rem;
     --font-size-h3: 1.125rem;

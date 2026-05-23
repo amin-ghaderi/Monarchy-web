@@ -66,9 +66,8 @@
   margin-block-start: 0.25rem;
 }
 
+/* Legacy — prefer .ac-nav-link--active in authority.css */
 .ac-nav-active {
-  border-inline-start: 2px solid var(--color-lapis-600);
-  padding-inline-start: 0.5rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-lapis-700);
 }

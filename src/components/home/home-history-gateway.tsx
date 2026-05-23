@@ -7,7 +7,7 @@ import { typeSupporting } from "@/lib/editorial/typography";
 
 export function HomeHistoryGateway() {
   return (
-    <HomeSection id="history" surface="stone">
+    <HomeSection id="history" chapter="textured">
       <EditorialSectionMasthead
         label="تاریخ"
         title="خط زمانی و حافظه نهادی"

@@ -1,32 +1,43 @@
 import { cn } from "@/lib/utils";
 
+/** Homepage chapter rhythm — visibly distinct bands */
+export type HomeChapter = "ivory" | "obsidian" | "textured" | "documentary";
+
+/** @deprecated Use `chapter` */
 export type HomeSectionSurface = "ivory" | "stone" | "paper" | "chronicle";
 
 type HomeSectionProps = {
   children: React.ReactNode;
   className?: string;
   id?: string;
-  /** First section — no top rule */
   lead?: boolean;
-  /** Full-bleed atmosphere behind content (hero only) */
   atmosphere?: React.ReactNode;
-  /** Visual surface band (Phase 16 choreography) */
+  chapter?: HomeChapter;
+  /** @deprecated Use `chapter` */
   surface?: HomeSectionSurface;
-  /** @deprecated Use `surface` — kept for compatibility */
   tone?: "masthead" | "default" | "quiet";
+  /** Wider institutional layout */
+  wide?: boolean;
 };
 
-const surfaceClasses: Record<HomeSectionSurface, string> = {
-  ivory: "ac-surface-a py-14 sm:py-16 lg:py-20",
-  stone: "ac-surface-c py-12 sm:py-14 lg:py-16",
-  paper: "ac-surface-a-paper py-14 sm:py-16 lg:py-20",
-  chronicle: "ac-surface-b py-0",
+const chapterClasses: Record<HomeChapter, string> = {
+  ivory: "ac-chapter-ivory py-16 sm:py-20 lg:py-24",
+  obsidian: "ac-chapter-obsidian py-16 sm:py-20 lg:py-24",
+  textured: "ac-chapter-textured py-16 sm:py-20 lg:py-24",
+  documentary: "ac-chapter-documentary py-16 sm:py-20 lg:py-28",
 };
 
-const toneToSurface: Record<NonNullable<HomeSectionProps["tone"]>, HomeSectionSurface> = {
+const surfaceToChapter: Record<HomeSectionSurface, HomeChapter> = {
+  ivory: "ivory",
+  stone: "textured",
+  paper: "documentary",
+  chronicle: "obsidian",
+};
+
+const toneToChapter: Record<NonNullable<HomeSectionProps["tone"]>, HomeChapter> = {
   masthead: "ivory",
   default: "ivory",
-  quiet: "stone",
+  quiet: "textured",
 };
 
 export function HomeSection({
@@ -35,28 +46,30 @@ export function HomeSection({
   id,
   lead = false,
   atmosphere,
+  chapter,
   surface,
   tone,
+  wide = false,
 }: HomeSectionProps) {
-  const resolvedSurface = surface ?? (tone ? toneToSurface[tone] : "ivory");
+  const resolvedChapter =
+    chapter ?? (surface ? surfaceToChapter[surface] : tone ? toneToChapter[tone] : "ivory");
 
   return (
     <section
       id={id}
       className={cn(
-        "border-mist px-5 sm:px-6",
-        !lead && resolvedSurface !== "chronicle" && "border-t",
-        surfaceClasses[resolvedSurface],
-        atmosphere && "relative isolate overflow-hidden",
-        atmosphere && lead && "ac-hero-section ac-hero-editorial",
+        "relative px-5 sm:px-6",
+        !lead && "border-t-2 border-mist",
+        chapterClasses[resolvedChapter],
+        atmosphere && "isolate overflow-hidden",
         className,
       )}
     >
       {atmosphere}
       <div
         className={cn(
-          "relative z-[1] mx-auto w-full max-w-5xl",
-          atmosphere && "ac-hero-content",
+          "relative z-[1] mx-auto w-full",
+          wide ? "max-w-6xl" : "max-w-5xl",
         )}
       >
         {children}

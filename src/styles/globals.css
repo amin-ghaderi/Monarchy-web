@@ -7,6 +7,7 @@
 @import "./identity.css";
 @import "./surfaces.css";
 @import "./geometry.css";
+@import "./authority.css";
 
 @theme inline {
   /* Colors */
@@ -57,6 +58,8 @@
   /* Shadows */
   --shadow-soft: var(--shadow-soft);
   --shadow-modal: var(--shadow-modal);
+  --shadow-architectural: var(--shadow-architectural);
+  --shadow-architectural-lg: var(--shadow-architectural-lg);
 
   /* Motion & atmosphere (Archival Continuum) */
   --opacity-grain: var(--grain-opacity);

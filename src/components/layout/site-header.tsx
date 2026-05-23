@@ -28,11 +28,11 @@ export function SiteHeader({ settings }: SiteHeaderProps) {
   return (
     <header
       className={cn(
-        "ac-institutional-rule ac-surface-a sticky top-0 z-[var(--z-sticky)] border-b border-mist",
-        scrolled && "shadow-soft",
+        "ac-header-authority ac-institutional-rule ac-chapter-ivory sticky top-0 z-[var(--z-sticky)] border-b border-mist",
+        scrolled && "shadow-architectural-lg",
       )}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center gap-5 px-5 sm:h-[4.25rem] sm:gap-7 sm:px-6">
+      <div className="mx-auto flex h-[4.25rem] max-w-7xl items-center gap-6 px-5 sm:h-[4.75rem] sm:gap-8 sm:px-6">
         <Link
           href="/"
           aria-label={WORDMARK_ARIA_LABEL}
@@ -46,7 +46,7 @@ export function SiteHeader({ settings }: SiteHeaderProps) {
         </Link>
 
         <nav
-          className="hidden flex-1 items-center justify-center gap-0.5 md:flex"
+          className="hidden flex-1 items-center justify-center gap-1 md:flex"
           aria-label="ناوبری اصلی"
         >
           {primaryNav.map((item) => (
